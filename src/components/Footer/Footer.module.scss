@@ -1,0 +1,22 @@
+.footer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &__nav-item--link {
+    &:hover {
+      svg rect,
+      svg path {
+        cursor: pointer;
+        fill: #9747FF;
+      }
+    }
+  }
+
+}
