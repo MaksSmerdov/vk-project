@@ -1,0 +1,35 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 16px;
+  color: vars.$white;
+  font-weight: bold;
+
+  &--yellow {
+    background-color: vars.$romaine-green;
+  }
+
+  &--green {
+    background-color: vars.$temperamental-green;
+  }
+
+  &--gray {
+    background-color: vars.$lucky-grey;
+  }
+
+  &--red {
+    background-color: vars.$lionheart;
+  }
+
+  &__star {
+    font-size: 0.9em;
+    fill: currentColor;
+  }
+}

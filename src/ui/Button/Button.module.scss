@@ -1,0 +1,63 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  min-height: 48px;
+  min-width: 48px;
+
+  font-size: 18px;
+  line-height: 24px;
+
+  border: none;
+  border-radius: 28px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.primary {
+  background-color: vars.$montana;
+  color: vars.$white;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: vars.$blue-jeans;
+  }
+
+  &:active {
+    background-color: vars.$blue-jeans;
+  }
+
+  &:focus-visible {
+    outline: none;
+    background-color: vars.$blue-jeans;
+  }
+}
+
+.secondary {
+  background-color: transparent;
+  color: vars.$black;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  &:focus-visible {
+    opacity: 0.5;
+    outline: none;
+  }
+}

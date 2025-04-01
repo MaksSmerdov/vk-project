@@ -23,10 +23,6 @@ export const useFetchMovie = <T>(
 
   useEffect(() => {
     void fetchData();
-    const intervalId = setInterval(() => {
-      void fetchData();
-    });
-    return () => clearInterval(intervalId);
   }, [fetchData]);
 
   return { loading, data, error };

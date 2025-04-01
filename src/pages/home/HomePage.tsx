@@ -1,10 +1,14 @@
 import * as React from 'react';
+import BestFilms from '../../components/BestFilms/BestFilms';
+import Intro from '../../components/Intro/Intro';
+import styles from './HomePage.module.scss';
 
 const HomePage: React.FC = () => {
   return (
-  <h1 className={'container'} style={{color: 'white'}}>
-    Здесь будет контент главной страницы
-  </h1>
+    <div className={`${styles['home']}`}>
+      <Intro />
+      <BestFilms />
+    </div>
   );
 };
 

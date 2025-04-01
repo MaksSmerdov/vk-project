@@ -1,0 +1,112 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+.intro {
+  padding-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  &__left {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__genre {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  &__genre-span {
+    @include mixins.text-style(18px, 18px, 400, rgba(vars.$white, 0.7));
+  }
+  &__title {
+    @include mixins.text-style(48px, 56px, 700, vars.$white);
+  }
+  &__descr {
+    @include mixins.text-style(24px, 32px, 400, rgba(vars.$white, 0.7));
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &-bottom {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+  &__img {
+    border-radius: 16px;
+    max-width: 680px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .intro {
+    &__genre-span {
+      @include mixins.text-style(18px, 22px, 400, rgba(vars.$white, 0.7));
+    }
+    &__title {
+      @include mixins.text-style(32px, 36px, 700, vars.$white);
+    }
+    &__descr {
+      @include mixins.text-style(20px, 26px, 400, rgba(vars.$white, 0.7));
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .intro {
+    padding: 0;
+    flex-direction: column-reverse;
+    gap: 24px;
+
+    &__left {
+      gap: 12px;
+    }
+
+    &__genre-span {
+      @include mixins.text-style(14px, 20px, 400, rgba(vars.$white, 0.7));
+    }
+
+    &__title {
+      @include mixins.text-style(24px, 32px, 700, vars.$white);
+    }
+
+    &__descr {
+      @include mixins.text-style(18px, 24px, 400, rgba(vars.$white, 0.7));
+    }
+
+    &__img {
+      max-width: 600px;
+    }
+
+    &__btns {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+
+      &-top {
+        display: grid;
+        width: 100%; // Верхняя кнопка занимает всю ширину контейнера
+      }
+
+      &-bottom {
+        display: flex;
+        width: 100%;
+        gap: 16px; // расстояние между кнопками 16px
+        > button {
+          flex: auto;
+        }
+      }
+    }
+  }
+}
+
+

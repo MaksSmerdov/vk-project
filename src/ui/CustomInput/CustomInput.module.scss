@@ -1,0 +1,73 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+@use 'sass:color'; // Подключаем модуль для работы с цветами
+
+.custom-input {
+  padding: 8px 12px;
+  max-width: 655px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-grow: 1;
+  background-color: vars.$montana;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+
+  &:not(:focus-within):hover {
+    opacity: 0.5;
+  }
+
+  &:not(:focus-within):active {
+    opacity: 0.5;
+  }
+
+  &:focus-within {
+    border-color: vars.$white;
+    box-shadow: 0 0 0 2px rgba(vars.$white, 0.2);
+    background-color: color.adjust(vars.$montana, $lightness: 5%);
+  }
+
+  &__icon {
+    color: vars.$white;
+    font-size: 18px;
+    flex-shrink: 0;
+
+    .custom-input:focus-within & {
+      color: rgba(vars.$white, 0.9);
+    }
+  }
+
+  &__field {
+    width: 100%;
+    @include mixins.text-style(18px, 18px, 400, vars.$white);
+    background: transparent;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: rgba(vars.$white, 0.7);
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &:focus::placeholder {
+      opacity: 0.5;
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .custom-input {
+    max-width: 24px;
+    padding: 0;
+    background-color: transparent;
+    border: transparent;
+    &__field {
+      display: none;
+    }
+    &__icon {
+      font-size: 24px;
+    }
+  }
+}
+

@@ -1,0 +1,29 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  &__img {
+    width: 25px;
+    height: 32px;
+  }
+  &__span {
+    @include mixins.text-style(24px, 24px, 400, vars.$white);
+  }
+}
+
+
+@media (max-width: 780px) {
+  .logo {
+    gap: 6px;
+    &__img {
+      width: 14px;
+      height: 18px;
+    }
+    &__span {
+      @include mixins.text-style(17px, 12px, 400, vars.$white);
+    }
+  }
+}
