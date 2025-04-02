@@ -1,0 +1,41 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+.auth {
+  &__btn {
+    align-self: center;
+    font-family: 'Play', sans-serif;
+    @include mixins.text-style(18px, 24px, 700, vars.$black);
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: vars.$blue-jeans;
+      transition: color 0.3s ease-in-out;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    &__header {
+      padding-bottom: 40px;
+    }
+    &__title {
+      align-self: center;
+      padding-bottom: 24px;
+    }
+    &__body {
+      padding-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    &__footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+
+  }
+}
+

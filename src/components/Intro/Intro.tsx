@@ -49,9 +49,9 @@ const Intro: React.FC = () => {
             </Button>
           </div>
           <div className={`${styles['intro__btns-bottom']}`}>
-            <Button variant="primary">О фильме</Button>
-            <Button variant="primary" icon={<FaHeart />} />
-            <Button variant="primary" icon={<FaSyncAlt />}></Button>
+            <Button variant="secondary">О фильме</Button>
+            <Button variant="secondary" icon={<FaHeart />} />
+            <Button variant="secondary" icon={<FaSyncAlt />}></Button>
           </div>
         </div>
       </div>

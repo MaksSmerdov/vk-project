@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: space-around;
   gap: 64px;
+
   &__title {
     @include mixins.text-style(40px, 48px, 700, vars.$white);
   }
@@ -41,5 +42,45 @@
     border-radius: 50px;
     @include mixins.text-style(24px, 32px, 700, #6A5DC2);
     z-index: 1;
+  }
+
+}
+
+@media (max-width: 800px) {
+  .best-films {
+    padding-bottom: 32px;
+    gap: 40px;
+
+    &__title {
+      @include mixins.text-style(24px, 32px, 700, vars.$white);
+    }
+
+    &__list {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: visible;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      cursor: grab;
+      scroll-snap-type: x mandatory;
+    }
+
+    .grabbing {
+      cursor: grabbing !important;
+    }
+
+    &__item {
+      flex: 0 0 25%;
+      scroll-snap-align: center;
+    }
+
+    &__link-img {
+      min-width: 224px;
+      min-height: 336px;
+      border-radius: 16px;
+    }
   }
 }

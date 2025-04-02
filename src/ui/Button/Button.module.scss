@@ -9,15 +9,12 @@
   padding: 10px 20px;
   min-height: 48px;
   min-width: 48px;
-
-  font-size: 18px;
-  line-height: 24px;
-
+  font-family: 'Play', sans-serif;
+  @include mixins.text-style(18px, 24px, 700);
   border: none;
   border-radius: 28px;
   cursor: pointer;
-  transition: all 0.2s ease;
-
+  transition: all 0.3s ease;
   .icon {
     width: 24px;
     height: 24px;
@@ -25,39 +22,45 @@
 }
 
 .primary {
-  background-color: vars.$montana;
+  background-color: vars.$blue-jeans;
   color: vars.$white;
-  transition: background-color 0.3s ease-in-out;
+  border: 1px solid vars.$blue-jeans;
 
   &:hover {
-    background-color: vars.$blue-jeans;
+    background-color: vars.$white;
+    color: vars.$black;
+    border: 1px solid vars.$black;
   }
 
   &:active {
-    background-color: vars.$blue-jeans;
+    background-color: vars.$white;
+    color: vars.$black;
   }
 
   &:focus-visible {
     outline: none;
-    background-color: vars.$blue-jeans;
+    background-color: vars.$white;
+    color: vars.$black;
   }
 }
 
 .secondary {
-  background-color: transparent;
-  color: vars.$black;
-  transition: opacity 0.3s ease-in-out;
+  background-color: #393B3C;
+  color: vars.$white;
 
   &:hover {
-    opacity: 0.5;
+    background-color: vars.$white;
+    color: vars.$black;
   }
 
   &:active {
-    opacity: 0.5;
+    background-color: vars.$white;
+    color: vars.$black;
   }
 
   &:focus-visible {
-    opacity: 0.5;
     outline: none;
+    background-color: vars.$white;
+    color: vars.$black;
   }
 }
