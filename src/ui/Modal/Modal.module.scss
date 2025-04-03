@@ -4,10 +4,10 @@
 :global(.light) {
   .modal {
     &__window {
-      background: vars.$white;
+      background: linear-gradient(45deg, vars.$white, #757575);
     }
     &__close-button {
-      background: vars.$white;
+      background: linear-gradient(45deg, vars.$white, #757575);
       color: vars.$black;
     }
   }
@@ -16,14 +16,15 @@
 :global(.dark) {
   .modal {
     &__window {
-      background: vars.$black;
+      background: linear-gradient(45deg, rgb(0, 0, 0), #8899d3);
     }
     &__close-button {
-      background: vars.$black;
+      background: linear-gradient(45deg, rgb(0, 0, 0), #8899d3);
       color: vars.$white;
     }
   }
 }
+
 
 .modal__overlay {
   position: fixed;
@@ -31,7 +32,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: vars.$black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,8 +43,7 @@
   padding: 64px 40px;
   border-radius: 12px;
   position: relative;
-  min-width: 420px;
-  max-width: 500px;
+  max-width: 420px;
 }
 
 .modal__close-button {

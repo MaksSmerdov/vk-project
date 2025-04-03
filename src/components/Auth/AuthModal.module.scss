@@ -3,8 +3,13 @@
 
 :global(.light) {
   .auth {
-    &__container__title {
-      color: vars.$black;
+    &__container {
+      &__title {
+        color: vars.$black;
+      }
+      &__span {
+        color: vars.$black
+      }
     }
     &__btn {
       color: vars.$black;
@@ -14,12 +19,18 @@
 
 :global(.dark) {
   .auth {
-    &__container__title {
-      color: vars.$white;
+    &__container {
+      &__title {
+        color: vars.$white;
+      }
+      &__span {
+        color: vars.$white
+      }
     }
     &__btn {
       color: vars.$white;
     }
+
   }
 }
 
@@ -49,9 +60,15 @@
       padding-bottom: 40px;
     }
     &__title {
-      display: flex;
-      justify-content: center;
       padding-bottom: 24px;
+      align-self: center;
+      text-align: center;
+    }
+    &__span {
+      padding-bottom: 24px;
+      display: flex;
+      text-align: center;
+      @include mixins.text-style(18px, 24px, 400);
     }
     &__body {
       padding-bottom: 24px;

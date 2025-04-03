@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { login, logout, register, getProfile } from '../../services/authService';
+import { getProfile, login, logout, register } from '../../services/authService';
 import { AuthInfo, RegisterData, SuccessfulResult, User } from '../../types/authUser';
 
 interface AuthState {
@@ -19,8 +19,7 @@ export const loginUser = createAsyncThunk<User, AuthInfo, { rejectValue: string 
   async (data: AuthInfo, { rejectWithValue }) => {
     try {
       await login(data);
-      const user: User = await getProfile();
-      return user;
+      return await getProfile();
     } catch (err: unknown) {
       if (err instanceof Error) {
         return rejectWithValue(err.message);
@@ -34,8 +33,7 @@ export const fetchProfile = createAsyncThunk<User, void, { rejectValue: string }
   'auth/fetchProfile',
   async (_, { rejectWithValue }) => {
     try {
-      const user: User = await getProfile();
-      return user;
+      return await getProfile();
     } catch (err: unknown) {
       if (err instanceof Error) {
         return rejectWithValue(err.message);

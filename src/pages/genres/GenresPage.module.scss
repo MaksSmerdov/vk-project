@@ -1,0 +1,19 @@
+.genres {
+  &__card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    &-top {
+
+    }
+    &-bottom {
+
+    }
+  }
+  &__img {
+    border-radius: 24px;
+  }
+  &__span {
+  }
+
+}

@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import ThemeWrapper from './components/ThemeWrapper/ThemeWrapper';
 import { useAppDispatch } from './hooks/useAppDispatch';
+import GenresPage from './pages/genres/GenresPage';
 import HomePage from './pages/home/HomePage';
 import './styles/app.scss';
 import { fetchProfile } from './store/slices/authSlice';
@@ -26,7 +27,7 @@ const App: React.FC = () => {
             <main className="app">
               <Routes>
                 <Route path="/home" element={<HomePage />} />
-                <Route path="/genres" />
+                <Route path="/genres" element={<GenresPage />} />
                 <Route path="/login" />
                 <Route path="*" element={<Navigate to="/home" replace />} />
               </Routes>

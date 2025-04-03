@@ -3,11 +3,11 @@ import styles from './AuthInput.module.scss';
 
 interface AuthInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
-  error?: string; // Если пусто или undefined — нет ошибки, иначе содержится текст ошибки
+  error?: string;
 }
 
 const AuthInput: React.FC<AuthInputProps> = ({ icon, error, ...inputProps }) => {
-  const hasError = Boolean(error); // Удобный флаг для визуального стиля
+  const hasError = Boolean(error);
 
   return (
     <div className={`${styles['custom-input']} ${hasError ? styles['custom-input__error'] : ''}`}>

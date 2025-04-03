@@ -1,3 +1,22 @@
+@use './mixins' as mixins;
+@use './variables' as vars;
+
+.light {
+  .page {
+    &__title {
+      color: vars.$black;
+    }
+  }
+}
+
+.dark {
+  .page {
+    &__title {
+      color: vars.$white;
+    }
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -40,10 +59,30 @@ body {
   margin: 0 auto;
 }
 
-@media (max-width: 780px) {
+.page {
+  padding-top: 64px;
+  &__title {
+    @include mixins.text-style(48px, 56px, 700);
+  }
+}
+
+@media (max-width: 1000px) {
+  .page {
+    &__title {
+      @include mixins.text-style(32px, 36px, 700)
+    }
+  }
+}
+
+@media (max-width: 800px) {
   .container {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .page {
+    &__title {
+      @include mixins.text-style(24px, 32px, 700);
+    }
   }
 
 }

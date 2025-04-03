@@ -15,10 +15,19 @@
   border-radius: 28px;
   cursor: pointer;
   transition: all 0.3s ease;
+
   .icon {
     width: 24px;
     height: 24px;
   }
+
+
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .primary {
@@ -47,6 +56,7 @@
 .secondary {
   background-color: #393B3C;
   color: vars.$white;
+
 
   &:hover {
     background-color: vars.$white;

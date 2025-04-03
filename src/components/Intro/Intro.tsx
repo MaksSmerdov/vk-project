@@ -47,7 +47,7 @@ const Intro: React.FC = () => {
           <span className={`${styles['intro__genre-span']}`}>{formatGenres(data.genres)}</span>
           <span className={`${styles['intro__genre-span']}`}>{formatRuntime(data.runtime)}</span>
         </div>
-        <h2 className={`${styles['intro__title']} title-reset`}>{data.title}</h2>
+        <h2 className={`page__title title-reset`}>{data.title}</h2>
         <p className={`${styles['intro__descr']} descr-reset`}>{data.plot}</p>
         <div className={`${styles['intro__btns']}`}>
           <div className={`${styles['intro__btns-top']}`}>

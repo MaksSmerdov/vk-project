@@ -14,7 +14,7 @@ const ThemeSwitcher = () => {
         className={`${styles['header__btn']} btn-reset`}
         onClick={() => dispatch(toggleTheme())}>
         <span className={styles['header__btn-switcher']}>
-          {theme === 'dark' ? <FaSun color="white" /> : <FaMoon />}
+          {theme === 'dark' ? <FaSun /> : <FaMoon />}
         </span>
       </button>
     </>

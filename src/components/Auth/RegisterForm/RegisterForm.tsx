@@ -16,9 +16,10 @@ function capitalizeFirstLetter(str: string): string {
 
 interface RegisterFormProps {
   switchToLogin: () => void;
+  onRegistrationSuccess: () => void; // новый callback
 }
 
-const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin }) => {
+const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin, onRegistrationSuccess }) => {
   const dispatch = useAppDispatch();
 
   const [email, setEmail] = useState('');
@@ -59,12 +60,12 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin }) => {
     // Проверка имени (только русские буквы)
     const russianRegex = /^[А-Яа-яЁё\s]+$/;
     if (!russianRegex.test(name)) {
-      newErrors.name = 'Имя должно содержать только русские буквы';
+      newErrors.name = 'Только русские буквы';
     }
 
     // Проверка фамилии (только русские буквы)
     if (!russianRegex.test(surname)) {
-      newErrors.surname = 'Фамилия должна содержать только русские буквы';
+      newErrors.surname = 'Только русские буквы';
     }
 
     if (password.length < 6) {
@@ -87,9 +88,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin }) => {
     dispatch(registerUser(registrationData))
       .unwrap()
       .then(() => {
-        // Здесь успех
         toast.success('Вы успешно зарегистрировались!');
-        switchToLogin();
+        onRegistrationSuccess(); // вызываем новый callback
       })
       .catch((err) => {
         toast.error(`Ошибка регистрации: ${err}`);

@@ -5,7 +5,8 @@
 .custom-input {
   position: relative;
   padding: 16px;
-  max-width: 350px;
+  max-width: 340px;
+  max-height: 56px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -15,7 +16,7 @@
   transition: all 0.3s ease;
 
   &__error {
-    border: 1px solid red;
+    border: 2px solid red;
 
     &-label {
       position: absolute;
@@ -36,6 +37,7 @@
   }
 
   &__icon {
+    max-height: 24px;
     font-size: 24px;
     color: vars.$black;
     transition: all 0.3s ease;

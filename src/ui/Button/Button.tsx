@@ -12,6 +12,7 @@ const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   icon,
   onClick,
+  disabled,
   ...rest
 }) => {
   const content =
@@ -25,7 +26,11 @@ const Button: React.FC<ButtonProps> = ({
     );
 
   return (
-    <button className={`${styles['button']} ${styles[variant]}`} onClick={onClick} {...rest}>
+    <button
+      className={`${styles['button']} ${styles[variant]} ${disabled ? styles['disabled'] : ''}`}
+      onClick={onClick}
+      disabled={disabled}
+      {...rest}>
       {content}
     </button>
   );
