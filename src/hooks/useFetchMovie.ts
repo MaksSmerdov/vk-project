@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 export const useFetchMovie = <T>(
   api: string
-): { loading: boolean; data: T | null; error: boolean } => {
+): { loading: boolean; data: T | null; error: boolean; refetch: () => void } => {
   const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<boolean>(false);
@@ -25,5 +25,10 @@ export const useFetchMovie = <T>(
     void fetchData();
   }, [fetchData]);
 
-  return { loading, data, error };
+  const refetch = useCallback(() => {
+    setLoading(true);
+    void fetchData();
+  }, [fetchData]);
+
+  return { loading, data, error, refetch };
 };

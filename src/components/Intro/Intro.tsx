@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { FaHeart, FaSyncAlt } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
+import { RootState } from '../../store/store';
 import { Movie } from '../../types/movie';
 import Button from '../../ui/Button/Button';
 import Rating from '../Rating/Rating';
 import styles from './Intro.module.scss';
 
 const Intro: React.FC = () => {
-  const { loading, data, error } = useFetchMovie<Movie>('movie/random');
+  const { loading, data, error, refetch } = useFetchMovie<Movie>('movie/random');
+  const user = useSelector((state: RootState) => state.auth.user);
 
   const formatRuntime = (minutes: number): string => {
     const hours = Math.floor(minutes / 60);
@@ -21,6 +24,10 @@ const Intro: React.FC = () => {
 
   const trailerOnClick = () => {
     window.open(`${data?.trailerUrl}`);
+  };
+
+  const refreshContent = () => {
+    refetch();
   };
 
   if (loading) {
@@ -50,8 +57,8 @@ const Intro: React.FC = () => {
           </div>
           <div className={`${styles['intro__btns-bottom']}`}>
             <Button variant="secondary">О фильме</Button>
-            <Button variant="secondary" icon={<FaHeart />} />
-            <Button variant="secondary" icon={<FaSyncAlt />}></Button>
+            <Button variant="secondary" icon={<FaHeart />} disabled={!user} />
+            <Button variant="secondary" icon={<FaSyncAlt />} onClick={refreshContent}></Button>
           </div>
         </div>
       </div>

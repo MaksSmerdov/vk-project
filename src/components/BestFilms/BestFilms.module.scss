@@ -1,6 +1,21 @@
 @use '../../styles/mixins' as mixins;
 @use '../../styles/variables' as vars;
 
+:global(.light) {
+  .best-films {
+    &__title {
+      color: vars.$black;
+    }
+    &__link-img {
+      border: 1px vars.$black solid;
+    }
+    &__rank {
+      background-color: vars.$winterspring-lilac;
+      color: vars.$white;
+    }
+  }
+}
+
 .best-films {
   padding-bottom: 120px;
   display: flex;

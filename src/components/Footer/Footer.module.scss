@@ -1,6 +1,29 @@
 @use '../../styles/mixins' as mixins;
 @use '../../styles/variables' as vars;
 
+:global(.light) {
+  .footer__nav-item--link {
+    svg {
+      rect {
+        stroke: vars.$black
+      }
+      path {
+        fill: vars.$black;
+      }
+    }
+    &:hover {
+      svg {
+        rect {
+          stroke: vars.$flaming-flamingo;
+        }
+        path {
+          fill: vars.$flaming-flamingo;
+        }
+      }
+    }
+  }
+}
+
 .footer {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -23,7 +46,6 @@
           svg {
             rect {
               transition: stroke 0.3s ease-in-out;
-
               stroke: vars.$flaming-flamingo;
             }
 

@@ -1,17 +1,17 @@
 import React from 'react';
 import styles from './AuthInput.module.scss';
 
-interface AuthInputProps {
+interface AuthInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
-  type?: string;
-  placeholder?: string;
+  error?: string;
 }
 
-const AuthInput: React.FC<AuthInputProps> = ({ icon, type, placeholder }) => {
+const AuthInput: React.FC<AuthInputProps> = ({ icon, error, ...inputProps }) => {
   return (
-    <div className={styles['custom-input']}>
-      <span className={styles['custom-input__icon']}>{icon}</span>
-      <input type={type} placeholder={placeholder} className={styles['custom-input__field']} />
+    <div className={`${styles['custom-input']} ${error ? styles['custom-input--error'] : ''}`}>
+      {icon && <span className={styles['custom-input__icon']}>{icon}</span>}
+      <input {...inputProps} className={`${styles['custom-input__field']}`} />
+      {error && <p className={styles['custom-input__error']}>{error}</p>}
     </div>
   );
 };

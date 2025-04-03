@@ -1,6 +1,24 @@
 @use '../../styles/mixins' as mixins;
 @use '../../styles/variables' as vars;
 
+:global(.light) {
+  .intro {
+    &__genre-span {
+      color: rgba(vars.$black, 0.7);
+    }
+    &__title {
+      color: vars.$black;
+    }
+    &__descr {
+      color: rgba(vars.$black, 0.7);
+    }
+    &__img {
+      border-radius: 16px;
+      border: 1px vars.$black solid;
+    }
+  }
+}
+
 .intro {
   padding-top: 32px;
   display: flex;

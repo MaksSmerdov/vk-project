@@ -13,6 +13,13 @@
     }
   }
 
+  &__error {
+    position: absolute;
+    bottom: 155px;
+    font-size: 13px;
+    color: red;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;

@@ -1,6 +1,36 @@
 @use '../../styles/mixins' as mixins;
 @use '../../styles/variables' as vars;
-@use 'sass:color'; // Подключаем модуль для работы с цветами
+@use 'sass:color';
+
+:global(.light) {
+  .custom-input {
+    background-color: transparent;
+    border: 1px black solid;
+    &:focus-within {
+      border-color: vars.$black;
+      box-shadow: 0 0 0 2px rgba(vars.$black, 0.2);
+    }
+    &__icon {
+      color: vars.$black;
+
+      .custom-input:focus-within & {
+        color: rgba(vars.$black, 0.9);
+      }
+
+    }
+    &__field {
+      color: vars.$black;
+      &::placeholder {
+        color: rgba(vars.$black, 0.7);
+      }
+    }
+  }
+  @media (max-width: 780px) {
+    .custom-input {
+      border: 1px transparent solid;
+    }
+  }
+}
 
 .custom-input {
   padding: 8px 12px;

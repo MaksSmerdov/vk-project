@@ -1,6 +1,21 @@
 @use '../../styles/mixins' as mixins;
 @use '../../styles/variables' as vars;
 
+:global(.light) {
+  .header {
+    &__nav-link {
+      color: vars.$black;
+      &.active {
+        color: vars.$black;
+      }
+    }
+    &__btn {
+      color: vars.$black;
+    }
+  }
+}
+
+
 .header {
   padding-top: 32px;
   padding-bottom: 32px;
@@ -128,16 +143,12 @@
   .header__nav-text {
     display: none;
   }
-  .header__nav-icon {
+  .header__nav-icon, .header__btn-icon, .header__btn-switcher {
     display: inline-flex;
     font-size: 24px;
   }
 
   .header__btn-text {
     display: none;
-  }
-  .header__btn-icon {
-    display: inline-flex;
-    font-size: 24px;
   }
 }

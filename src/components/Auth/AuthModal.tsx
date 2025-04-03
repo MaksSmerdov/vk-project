@@ -24,7 +24,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ onClose }) => {
         {isRegistering ? (
           <RegisterForm switchToLogin={switchToLogin} />
         ) : (
-          <LoginForm switchToRegister={switchToRegister} />
+          <LoginForm switchToRegister={switchToRegister} closeModal={onClose} />
         )}
       </div>
     </Modal>

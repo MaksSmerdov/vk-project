@@ -1,14 +1,19 @@
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './Button.module.scss';
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   variant?: 'primary' | 'secondary';
   icon?: ReactNode;
-  onClick?: () => void;
 }
 
-const Button = ({ children, variant = 'primary', icon, onClick }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  variant = 'primary',
+  icon,
+  onClick,
+  ...rest
+}) => {
   const content =
     icon && !children ? (
       icon
@@ -20,7 +25,7 @@ const Button = ({ children, variant = 'primary', icon, onClick }: ButtonProps) =
     );
 
   return (
-    <button className={`${styles['button']} ${styles[variant]}`} onClick={onClick}>
+    <button className={`${styles['button']} ${styles[variant]}`} onClick={onClick} {...rest}>
       {content}
     </button>
   );
