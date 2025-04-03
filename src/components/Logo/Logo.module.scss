@@ -1,6 +1,18 @@
 @use '../../styles/mixins' as mixins;
 @use '../../styles/variables' as vars;
 
+:global(.light) {
+  .logo__span {
+    color: vars.$black
+  }
+}
+
+:global(.dark) {
+  .logo__span {
+    color: vars.$white;
+  }
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -11,8 +23,9 @@
     height: 32px;
   }
   &__span {
-    @include mixins.text-style(24px, 24px, 400, vars.$white);
+    @include mixins.text-style(24px, 24px, 400);
   }
+
 }
 
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { logoutUser } from '../../store/slices/authSlice';
 import type { RootState } from '../../store/store';
@@ -28,6 +29,7 @@ const Header: React.FC = () => {
   const logOut = async () => {
     try {
       await dispatch(logoutUser()).unwrap();
+      toast.success('Вы успешно вышли!');
     } catch (error) {
       console.error('Ошибка при логауте:', error);
     }

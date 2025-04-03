@@ -15,22 +15,27 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ switchToRegister, closeModal }) => {
   const dispatch = useAppDispatch();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [commonError, setCommonError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const authData: AuthInfo = { email, password };
 
+    setIsLoading(true);
     dispatch(loginUser(authData))
       .unwrap()
       .then(() => {
         toast.success('Успешная авторизация!');
         closeModal();
       })
-      .catch((err) => {
-        toast.error(err);
+      .catch(() => {
+        setCommonError('Неверный email или пароль');
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -53,9 +58,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ switchToRegister, closeModal }) =
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        {commonError && <p className={styles['auth__error']}>{commonError}</p>}
       </div>
+
       <div className={styles['auth__container__footer']}>
-        <Button type="submit">Войти</Button>
+        <Button type="submit">{isLoading ? 'Проверка данных...' : 'Войти'}</Button>
         <button
           className={`${styles['auth__btn']} btn-reset`}
           type="button"

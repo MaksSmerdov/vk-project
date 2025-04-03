@@ -1,11 +1,33 @@
 @use '../../styles/mixins' as mixins;
 @use '../../styles/variables' as vars;
 
+:global(.light) {
+  .auth {
+    &__container__title {
+      color: vars.$black;
+    }
+    &__btn {
+      color: vars.$black;
+    }
+  }
+}
+
+:global(.dark) {
+  .auth {
+    &__container__title {
+      color: vars.$white;
+    }
+    &__btn {
+      color: vars.$white;
+    }
+  }
+}
+
 .auth {
   &__btn {
     align-self: center;
     font-family: 'Play', sans-serif;
-    @include mixins.text-style(18px, 24px, 700, vars.$black);
+    @include mixins.text-style(18px, 24px, 700);
     transition: color 0.3s ease-in-out;
     &:hover {
       color: vars.$blue-jeans;
@@ -27,7 +49,8 @@
       padding-bottom: 40px;
     }
     &__title {
-      align-self: center;
+      display: flex;
+      justify-content: center;
       padding-bottom: 24px;
     }
     &__body {

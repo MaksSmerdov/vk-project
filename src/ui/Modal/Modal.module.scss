@@ -1,6 +1,30 @@
 @use '../../styles/mixins' as mixins;
 @use '../../styles/variables' as vars;
 
+:global(.light) {
+  .modal {
+    &__window {
+      background: vars.$white;
+    }
+    &__close-button {
+      background: vars.$white;
+      color: vars.$black;
+    }
+  }
+}
+
+:global(.dark) {
+  .modal {
+    &__window {
+      background: vars.$black;
+    }
+    &__close-button {
+      background: vars.$black;
+      color: vars.$white;
+    }
+  }
+}
+
 .modal__overlay {
   position: fixed;
   top: 0;
@@ -15,7 +39,6 @@
 }
 
 .modal__window {
-  background: vars.$white;
   padding: 64px 40px;
   border-radius: 12px;
   position: relative;
@@ -33,7 +56,6 @@
   align-items: center;
   top: 0;
   right: -65px;
-  background: vars.$white;
   border: none;
   border-radius: 24px;
   cursor: pointer;

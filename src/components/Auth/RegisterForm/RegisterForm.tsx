@@ -7,6 +7,12 @@ import { RegisterData } from '../../../types/authUser';
 import AuthInput from '../../../ui/AuthInput/AuthInput';
 import Button from '../../../ui/Button/Button';
 import styles from '../AuthModal.module.scss';
+import { toast } from 'react-toastify';
+
+function capitalizeFirstLetter(str: string): string {
+  if (!str) return '';
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 interface RegisterFormProps {
   switchToLogin: () => void;
@@ -20,24 +26,83 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin }) => {
   const [surname, setSurname] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [errors, setErrors] = useState<{
+    email?: string;
+    name?: string;
+    surname?: string;
+    password?: string;
+    confirmPassword?: string;
+    common?: string;
+  }>({});
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null);
+    setErrors({}); // Сброс ошибок перед новой валидацией
+
+    const newErrors: {
+      email?: string;
+      name?: string;
+      surname?: string;
+      password?: string;
+      confirmPassword?: string;
+      common?: string;
+    } = {};
+
+    // Валидация email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      newErrors.email = 'Введите корректный email';
+    }
+
+    // Проверка имени (только русские буквы)
+    const russianRegex = /^[А-Яа-яЁё\s]+$/;
+    if (!russianRegex.test(name)) {
+      newErrors.name = 'Имя должно содержать только русские буквы';
+    }
+
+    // Проверка фамилии (только русские буквы)
+    if (!russianRegex.test(surname)) {
+      newErrors.surname = 'Фамилия должна содержать только русские буквы';
+    }
+
+    if (password.length < 6) {
+      newErrors.password = 'Пароль должен быть не менее 6 символов';
+    }
 
     if (password !== confirmPassword) {
-      setError('Пароли не совпадают');
+      newErrors.confirmPassword = 'Пароли не совпадают';
+    }
+
+    // Если есть ошибки — прерываем
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
+    setIsLoading(true);
+    // Если ошибок нет — регистрация
     const registrationData: RegisterData = { email, password, name, surname };
-    dispatch(registerUser(registrationData));
+    dispatch(registerUser(registrationData))
+      .unwrap()
+      .then(() => {
+        // Здесь успех
+        toast.success('Вы успешно зарегистрировались!');
+        switchToLogin();
+      })
+      .catch((err) => {
+        toast.error(`Ошибка регистрации: ${err}`);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
     <form className={styles['auth__container__form']} onSubmit={handleRegister}>
       <h2 className={`${styles['auth__container__title']} title-reset`}>Регистрация</h2>
+
       <div className={styles['auth__container__body']}>
         <AuthInput
           icon={<FaRegEnvelope />}
@@ -45,6 +110,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin }) => {
           placeholder="Электронная почта"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          error={errors.email}
           required
         />
         <AuthInput
@@ -52,7 +118,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin }) => {
           type="text"
           placeholder="Имя"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(capitalizeFirstLetter(e.target.value))}
+          error={errors.name}
           required
         />
         <AuthInput
@@ -60,7 +127,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin }) => {
           type="text"
           placeholder="Фамилия"
           value={surname}
-          onChange={(e) => setSurname(e.target.value)}
+          onChange={(e) => setSurname(capitalizeFirstLetter(e.target.value))}
+          error={errors.surname}
           required
         />
         <AuthInput
@@ -69,6 +137,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin }) => {
           placeholder="Пароль"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          error={errors.password}
           required
         />
         <AuthInput
@@ -77,12 +146,13 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin }) => {
           placeholder="Подтвердите пароль"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          error={errors.confirmPassword}
           required
         />
-        {error && <p className={styles['auth__error']}>{error}</p>}
       </div>
+
       <div className={styles['auth__container__footer']}>
-        <Button type="submit">Зарегистрироваться</Button>
+        <Button type="submit">{isLoading ? 'Отправка данных...' : 'Зарегистрироваться'}</Button>
         <button
           className={`${styles['auth__btn']} btn-reset`}
           type="button"

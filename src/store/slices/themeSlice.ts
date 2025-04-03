@@ -4,8 +4,10 @@ interface ThemeState {
   theme: 'light' | 'dark';
 }
 
+// 1) При инициализации проверяем localStorage
+const savedTheme = localStorage.getItem('app_theme');
 const initialState: ThemeState = {
-  theme: 'dark',
+  theme: savedTheme === 'light' ? 'light' : 'dark',
 };
 
 const themeSlice = createSlice({
@@ -13,7 +15,11 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     toggleTheme: (state) => {
-      state.theme = state.theme === 'light' ? 'dark' : 'light';
+      const newTheme = state.theme === 'light' ? 'dark' : 'light';
+      state.theme = newTheme;
+
+      // 2) Запоминаем выбранную тему в localStorage
+      localStorage.setItem('app_theme', newTheme);
     },
   },
 });

@@ -3,6 +3,7 @@
 @use 'sass:color';
 
 .custom-input {
+  position: relative;
   padding: 16px;
   max-width: 350px;
   display: flex;
@@ -13,8 +14,14 @@
   border: 1px solid vars.$black;
   transition: all 0.3s ease;
 
-  &--error {
-    border: 1px solid red
+  &__error {
+    border: 1px solid red;
+
+    &-label {
+      position: absolute;
+      bottom: 2px;
+      @include mixins.text-style(12px, 12px, 400, red)
+    }
   }
 
   &:hover,
@@ -24,6 +31,7 @@
 
     .custom-input__icon {
       color: vars.$winterspring-lilac;
+
     }
   }
 
@@ -31,6 +39,9 @@
     font-size: 24px;
     color: vars.$black;
     transition: all 0.3s ease;
+   &-error {
+     color: red
+   }
   }
 
   &__field {
