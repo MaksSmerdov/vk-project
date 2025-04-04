@@ -1,19 +1,18 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
 .genres {
-  &__card {
+  &__list {
+    padding-top: 40px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
-    &-top {
-
-    }
-    &-bottom {
-
-    }
-  }
-  &__img {
-    border-radius: 24px;
-  }
-  &__span {
+    gap: 64px 40px;
   }
 
+  &__btn {
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

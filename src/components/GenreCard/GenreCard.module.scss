@@ -1,0 +1,41 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+:global(.light) {
+  .genres {
+    &__link-div {
+      color: vars.$black
+    }
+  }
+}
+
+:global(.dark) {
+  .genres {
+    &__link-div {
+      color: vars.$white
+    }
+  }
+}
+
+.genres {
+  &__link {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 24px;
+    width: 100%;
+    &-img {
+      display: block;
+      border-radius: 8px;
+      z-index: 2;
+    }
+    &-div {
+      margin-top: -8px;
+      background-color: vars.$black;
+      text-align: center;
+      padding: 30px;
+      @include mixins.text-style(24px, 32px, 700);
+      z-index: 1;
+    }
+  }
+}

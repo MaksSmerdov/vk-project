@@ -6,13 +6,9 @@ import { registerUser } from '../../../store/slices/authSlice';
 import { RegisterData } from '../../../types/authUser';
 import AuthInput from '../../../ui/AuthInput/AuthInput';
 import Button from '../../../ui/Button/Button';
+import { capitalizeFirstLetter } from '../../../utils/utilsFunctions';
 import styles from '../AuthModal.module.scss';
 import { toast } from 'react-toastify';
-
-function capitalizeFirstLetter(str: string): string {
-  if (!str) return '';
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
 
 interface RegisterFormProps {
   switchToLogin: () => void;

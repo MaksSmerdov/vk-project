@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
+import GenreCard from '../../components/GenreCard/GenreCard';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
+import Button from '../../ui/Button/Button';
 import styles from './GenresPage.module.scss';
 
 const GenresPage: React.FC = () => {
-  const { loading, data, error } = useFetchMovie<[]>('movie/genres');
+  const { loading, data, error } = useFetchMovie<string[]>('movie/genres');
+  const [visibleCount, setVisibleCount] = useState(8);
 
   if (loading) return <p>Loading...</p>;
   if (error || !data) return <p>Error</p>;
+
+  const handleShowMore = () => {
+    setVisibleCount((prev) => prev + 8);
+  };
+
+  const genresToDisplay = data.slice(0, visibleCount);
 
   return (
     <section className="page">
       <h2 className="page__title title-reset">Жанры фильмов</h2>
       <ul className={`${styles['genres__list']} list-reset`}>
-        {data.map((genre) => (
-          <li className={`${styles['genres__item']} list-reset`}>
-            <a className={styles['genres__link']}>
-              <img
-                className={styles['genres__link-img']}
-                src={`/images/genre_${genre}.png`}
-                alt={genre}
-              />
-              <div className={styles['genres__div']}>{genre}</div>
-            </a>
-          </li>
+        {genresToDisplay.map((genre) => (
+          <GenreCard genre={genre} />
         ))}
       </ul>
+      {visibleCount < data.length && (
+        <div className={`${styles['genres__btn']}`}>
+          <Button onClick={handleShowMore}>Показать еще</Button>
+        </div>
+      )}
     </section>
   );
 };

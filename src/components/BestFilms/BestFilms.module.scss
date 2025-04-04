@@ -6,13 +6,6 @@
     &__title {
       color: vars.$black;
     }
-    &__link-img {
-      border: 1px vars.$black solid;
-    }
-    &__rank {
-      background-color: vars.$winterspring-lilac;
-      color: vars.$white;
-    }
   }
 }
 
@@ -22,43 +15,14 @@
   flex-direction: column;
   justify-content: space-around;
   gap: 64px;
-
   &__title {
     @include mixins.text-style(40px, 48px, 700, vars.$white);
   }
-
   &__list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 64px 32px;
   }
-
-  &__link {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-
-  &__link-img {
-    filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.33));
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 16px;
-  }
-
-  &__rank {
-    top: -12px;
-    left: -12px;
-    padding: 8px 24px;
-    position: absolute;
-    background-color: white;
-    border-radius: 50px;
-    @include mixins.text-style(24px, 32px, 700, #6A5DC2);
-    z-index: 1;
-  }
-
 }
 
 @media (max-width: 800px) {
@@ -87,15 +51,5 @@
       cursor: grabbing !important;
     }
 
-    &__item {
-      flex: 0 0 25%;
-      scroll-snap-align: center;
-    }
-
-    &__link-img {
-      min-width: 224px;
-      min-height: 336px;
-      border-radius: 16px;
-    }
   }
 }
