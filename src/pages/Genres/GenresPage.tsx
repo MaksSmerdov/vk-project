@@ -5,7 +5,7 @@ import Button from '../../ui/Button/Button';
 import styles from './GenresPage.module.scss';
 
 const GenresPage: React.FC = () => {
-  const { loading, data, error } = useFetchMovie<string[]>('movie/genres');
+  const { loading, data, error } = useFetchMovie<string[]>('movie/Genres');
   const [visibleCount, setVisibleCount] = useState(8);
 
   if (loading) return <p>Loading...</p>;
@@ -22,7 +22,7 @@ const GenresPage: React.FC = () => {
       <h2 className="page__title title-reset">Жанры фильмов</h2>
       <ul className={`${styles['genres__list']} list-reset`}>
         {genresToDisplay.map((genre) => (
-          <GenreCard genre={genre} />
+          <GenreCard key={genre} genre={genre} />
         ))}
       </ul>
       {visibleCount < data.length && (

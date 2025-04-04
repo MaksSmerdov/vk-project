@@ -16,6 +16,7 @@
   justify-content: space-around;
   gap: 64px;
   &__title {
+    padding-top: 40px;
     @include mixins.text-style(40px, 48px, 700, vars.$white);
   }
   &__list {
@@ -31,6 +32,7 @@
     gap: 40px;
 
     &__title {
+      padding-top: 32px;
       @include mixins.text-style(24px, 32px, 700, vars.$white);
     }
 

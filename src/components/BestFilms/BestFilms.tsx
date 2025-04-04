@@ -68,7 +68,7 @@ const BestFilms: React.FC = () => {
       <h2 className={`${styles['best-films__title']} title-reset`}>Топ 10 фильмов</h2>
       <ul className={`${styles['best-films__list']} list-reset`}>
         {data.map((movie, index) => (
-          <MovieCard movie={movie} index={index} />
+          <MovieCard key={movie.id} movie={movie} index={index} />
         ))}
       </ul>
     </div>

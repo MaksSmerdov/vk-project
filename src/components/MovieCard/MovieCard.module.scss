@@ -22,7 +22,7 @@
     }
     &__rank {
       background-color: white;
-      @include mixins.text-style(24px, 32px, 700, #6A5DC2);
+      color: #6A5DC2;
     }
   }
 }
@@ -30,14 +30,13 @@
 .movie-card {
   &__link {
     display: block;
-    width: 100%;
-    height: 100%;
     position: relative;
+    text-decoration: none;
   }
 
   &__link-img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     border-radius: 16px;
   }
@@ -47,21 +46,29 @@
     left: -12px;
     padding: 8px 24px;
     position: absolute;
+    background-color: white;
     border-radius: 50px;
+    @include mixins.text-style(24px, 32px, 700);
     z-index: 1;
   }
 }
 
+.movie-card__skeleton {
+  width: 200px;
+  height: 300px;
+  background-color: #e0e0e0;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
 @media (max-width: 800px) {
   .movie-card {
-    &__item {
-      flex: 0 0 25%;
-      scroll-snap-align: center;
-    }
-
     &__link-img {
-      min-width: 224px;
-      min-height: 336px;
       border-radius: 16px;
     }
   }

@@ -5,7 +5,7 @@ import styles from './HomePage.module.scss';
 
 const HomePage: React.FC = () => {
   return (
-    <div className={`${styles['home']}`}>
+    <div className={`${styles['Home']}`}>
       <Intro />
       <BestFilms />
     </div>

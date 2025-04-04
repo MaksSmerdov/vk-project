@@ -63,7 +63,22 @@ body {
   padding-top: 64px;
   &__title {
     @include mixins.text-style(48px, 56px, 700);
+    transition: color 0.3s ease-in-out;
+    text-decoration: none;
   }
+}
+
+.arrow::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: solid currentColor;
+  border-width: 0 4px 4px 0;
+  transform: rotate(135deg);
+  margin-right: 16px;
+  margin-bottom: 4px;
+  vertical-align: middle;
 }
 
 @media (max-width: 1000px) {
@@ -71,6 +86,12 @@ body {
     &__title {
       @include mixins.text-style(32px, 36px, 700)
     }
+  }
+
+  .arrow::before {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
   }
 }
 
@@ -84,5 +105,8 @@ body {
       @include mixins.text-style(24px, 32px, 700);
     }
   }
-
+  .arrow::before {
+    width: 14px;
+    height: 14px;
+  }
 }

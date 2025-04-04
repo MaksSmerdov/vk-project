@@ -10,9 +10,14 @@ import AuthModal from '../Auth/AuthModal';
 import Rating from '../Rating/Rating';
 import styles from './Intro.module.scss';
 
-const Intro: React.FC = () => {
+interface IntroProps {
+  api?: string;
+  homepage?: boolean;
+}
+
+const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { loading, data, error, refetch } = useFetchMovie<Movie>('movie/random');
+  const { loading, data, error, refetch } = useFetchMovie<Movie>(`movie/${api}`);
   const user = useSelector((state: RootState) => state.auth.user);
 
   const openModal = () => {
@@ -74,14 +79,21 @@ const Intro: React.FC = () => {
               </Button>
             </div>
             <div className={`${styles['intro__btns-bottom']}`}>
-              <Button variant="secondary">О фильме</Button>
+              {homepage && <Button variant="secondary">О фильме</Button>}
               <Button variant="secondary" icon={<FaHeart />} onClick={favoriteOnClick} />
-              <Button variant="secondary" icon={<FaSyncAlt />} onClick={refreshContent}></Button>
+              {homepage && (
+                <Button variant="secondary" icon={<FaSyncAlt />} onClick={refreshContent} />
+              )}
             </div>
           </div>
         </div>
         <div className={`${styles['intro__right']}`}>
-          <img className={`${styles['intro__img']}`} src={data.backdropUrl} alt="intro" />
+          <img
+            className={`${styles['intro__img']}`}
+            src={data.backdropUrl}
+            alt="intro"
+            loading="lazy"
+          />
         </div>
       </div>
       {isOpen && <AuthModal onClose={closeModal} />}

@@ -1,0 +1,78 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+:global(.light) {
+  .movies {
+    &__loading {
+      color: vars.$black;
+    }
+  }
+}
+
+:global(.dark) {
+  .movies {
+    &__loading {
+      color: vars.$white;
+    }
+  }
+}
+
+.movies {
+  &__loading {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include mixins.text-style(24px, 32px, 700)
+  }
+}
+
+.movies__title {
+  &:hover {
+    color: vars.$winterspring-lilac;
+    transition: color 0.3s ease-in-out;
+  }
+}
+
+.movies__list {
+    padding-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 64px 32px;
+  }
+.movies__btn {
+      padding-top: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+@media (max-width: 1000px) {
+  .movies {
+    &__list {
+      padding-top: 40px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .movies {
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+}
+
+@media (max-width: 510px) {
+  .movies {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+    }
+  }
+}
