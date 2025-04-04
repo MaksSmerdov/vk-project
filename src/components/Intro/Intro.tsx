@@ -7,6 +7,7 @@ import { useFetchMovie } from '../../hooks/useFetchMovie';
 import { RootState } from '../../store/store';
 import { Movie } from '../../types/movie';
 import Button from '../../ui/Button/Button';
+import { formatRuntime } from '../../utils/utilsFunctions';
 import AuthModal from '../Auth/AuthModal';
 import Rating from '../../ui/Rating/Rating';
 import styles from './Intro.module.scss';
@@ -28,12 +29,6 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
 
   const closeModal = () => {
     setIsOpen(false);
-  };
-
-  const formatRuntime = (minutes: number): string => {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return `${hours}h ${mins}m`;
   };
 
   const formatGenres = (genres: string[]): string => {

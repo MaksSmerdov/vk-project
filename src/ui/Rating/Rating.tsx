@@ -1,11 +1,13 @@
 import styles from './Rating.module.scss';
 import { FaStar } from 'react-icons/fa';
+import { CSSProperties } from 'react';
 
 interface RatingProps {
   value: number;
+  style?: CSSProperties;
 }
 
-const Rating = ({ value }: RatingProps) => {
+const Rating = ({ value, style }: RatingProps) => {
   const getRatingColor = (rating: number) => {
     if (rating >= 8) return styles['rating--yellow'];
     if (rating >= 7) return styles['rating--green'];
@@ -14,9 +16,9 @@ const Rating = ({ value }: RatingProps) => {
   };
 
   return (
-    <div className={`${styles['rating']} ${getRatingColor(value)}`}>
-      {value.toFixed(1)}
+    <div className={`${styles['rating']} ${getRatingColor(value)}`} style={style}>
       <FaStar className={styles['rating__star']} />
+      {value.toFixed(1)}
     </div>
   );
 };
