@@ -9,7 +9,7 @@ import type { RootState } from '../../store/store';
 import SearchInput from '../../ui/SearchInput/SearchInput';
 import ThemeSwitcher from './ThemeSwitcher';
 import AuthModal from '../Auth/AuthModal';
-import Logo from '../Logo/Logo';
+import Logo from '../../ui/Logo/Logo';
 import { FiList, FiUser } from 'react-icons/fi';
 import styles from './Header.module.scss';
 

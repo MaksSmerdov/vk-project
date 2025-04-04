@@ -2,12 +2,13 @@ import { useState } from 'react';
 import * as React from 'react';
 import { FaHeart, FaSyncAlt } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
 import { RootState } from '../../store/store';
 import { Movie } from '../../types/movie';
 import Button from '../../ui/Button/Button';
 import AuthModal from '../Auth/AuthModal';
-import Rating from '../Rating/Rating';
+import Rating from '../../ui/Rating/Rating';
 import styles from './Intro.module.scss';
 
 interface IntroProps {
@@ -19,6 +20,7 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { loading, data, error, refetch } = useFetchMovie<Movie>(`movie/${api}`);
   const user = useSelector((state: RootState) => state.auth.user);
+  const navigate = useNavigate();
 
   const openModal = () => {
     setIsOpen(true);
@@ -52,6 +54,7 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
     }
   };
 
+  // Если данные ещё не загружены
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -79,7 +82,11 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
               </Button>
             </div>
             <div className={`${styles['intro__btns-bottom']}`}>
-              {homepage && <Button variant="secondary">О фильме</Button>}
+              {homepage && (
+                <Button variant="secondary" onClick={() => navigate(`/movie/${data.id}`)}>
+                  О фильме
+                </Button>
+              )}
               <Button variant="secondary" icon={<FaHeart />} onClick={favoriteOnClick} />
               {homepage && (
                 <Button variant="secondary" icon={<FaSyncAlt />} onClick={refreshContent} />

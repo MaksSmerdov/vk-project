@@ -6,6 +6,9 @@
     &__title {
       color: vars.$black;
     }
+    &__subtitle {
+      color: vars.$black
+    }
   }
 }
 
@@ -13,6 +16,9 @@
   .page {
     &__title {
       color: vars.$white;
+    }
+    &__subtitle {
+      color: vars.$white
     }
   }
 }
@@ -53,18 +59,23 @@ body {
 }
 
 .container {
-  max-width: 1360px;
-  padding-left: 10px;
-  padding-right: 10px;
+  max-width: 1440px;
+  padding-left: 80px;
+  padding-right: 80px;
   margin: 0 auto;
 }
 
 .page {
+  padding-bottom: 120px;
   padding-top: 64px;
   &__title {
     @include mixins.text-style(48px, 56px, 700);
     transition: color 0.3s ease-in-out;
     text-decoration: none;
+  }
+  &__subtitle {
+    padding-top: 40px;
+    @include mixins.text-style(40px, 48px, 700);
   }
 }
 
@@ -85,6 +96,10 @@ body {
   .page {
     &__title {
       @include mixins.text-style(32px, 36px, 700)
+    }
+    &__subtitle {
+      padding-top: 32px;
+      @include mixins.text-style(24px, 32px, 700);
     }
   }
 

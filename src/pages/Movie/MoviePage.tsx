@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import Intro from '../../components/Intro/Intro';
+import MovieDescription from '../../components/MovieDescription/MovieDescription';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
 import { Movie } from '../../types/movie';
 
@@ -10,7 +11,12 @@ const MoviePage = () => {
   if (loading) return <p>Loading...</p>;
   if (error || !data) return <p>Error!</p>;
 
-  return <Intro api={`${id}`} homepage={false} />;
+  return (
+    <>
+      <Intro api={`${id}`} homepage={false} />
+      <MovieDescription movie={data} />
+    </>
+  );
 };
 
 export default MoviePage;

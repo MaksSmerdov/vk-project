@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LoginForm from './LoginForm/LoginForm';
 import Modal from '../../ui/Modal/Modal';
-import Logo from '../Logo/Logo';
+import Logo from '../../ui/Logo/Logo';
 import styles from './AuthModal.module.scss';
 import RegisterForm from './RegisterForm/RegisterForm';
 import { RegisterSuccess } from './RegisterForm/RegisterSuccess';

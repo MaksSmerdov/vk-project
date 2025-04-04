@@ -1,0 +1,51 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+:global(.light) {
+  .movie-description {
+    &__label {
+      color: vars.$black;
+    }
+    &__dots {
+      border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+    }
+    &__value {
+      color: vars.$black;
+    }
+  }
+}
+
+:global(.dark) {
+  .movie-description {
+    &__label {
+      color: vars.$white;
+    }
+    &__dots {
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.5);    }
+    &__value {
+      color: vars.$white;
+    }
+  }
+}
+
+.movie-description {
+  &__details {
+    margin-top: 64px;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  &__label {
+    flex: 0 0 auto;
+    font-weight: 400;
+  }
+  &__dots {
+    flex: 1;
+    margin: 0 10px;
+  }
+  &__value {
+    flex: 0 0 auto;
+  }
+}
