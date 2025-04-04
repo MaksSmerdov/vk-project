@@ -35,8 +35,8 @@
   }
 
   &__link-img {
-    width: 100%;
-    height: auto;
+    max-width: 224px;
+    height: 336px;
     object-fit: cover;
     border-radius: 16px;
   }
@@ -53,17 +53,21 @@
   }
 }
 
-.movie-card__skeleton {
-  width: 200px;
-  height: 300px;
-  background-color: #e0e0e0;
-  animation: pulse 1.5s infinite;
+
+@media (max-width: 1400px) {
+  .movie-card {
+    &__link-img {
+      border-radius: 16px;
+    }
+  }
 }
 
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+@media (max-width: 1100px) {
+  .movie-card {
+    &__link-img {
+      border-radius: 16px;
+    }
+  }
 }
 
 @media (max-width: 800px) {

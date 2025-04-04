@@ -109,9 +109,13 @@ const SearchInput: React.FC = () => {
           ))}
         </ul>
       )}
-
-      {loading && <div className={styles.loader}>Загрузка...</div>}
-      {error && <div className={styles.error}>Ошибка при загрузке данных</div>}
+      {movies?.length === 0 && (
+        <div className={`${styles['custom-input__message']}`}>Фильмы не найдены</div>
+      )}
+      {loading && <div className={`${styles['custom-input__message']}`}>Загрузка...</div>}
+      {error && (
+        <div className={`${styles['custom-input__message']}`}>Ошибка при загрузке данных</div>
+      )}
     </div>
   );
 };

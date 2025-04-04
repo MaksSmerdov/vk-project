@@ -22,7 +22,26 @@
   &__list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
     gap: 64px 32px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .best-films {
+    &__list {
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 12px;
+      gap: 16px 16px;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .best-films {
+    &__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }
 
@@ -37,21 +56,7 @@
     }
 
     &__list {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      overflow-y: visible;
-      scrollbar-width: none;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      cursor: grab;
-      scroll-snap-type: x mandatory;
+      grid-template-columns: repeat(3, 1fr);
     }
-
-    .grabbing {
-      cursor: grabbing !important;
-    }
-
   }
 }
