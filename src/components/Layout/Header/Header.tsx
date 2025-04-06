@@ -42,7 +42,7 @@ const Header: React.FC = () => {
           <Logo />
         </div>
         <div className={styles['header__right']}>
-          <ul className={`${styles['header__nav']} list-reset`}>
+          <ul className="page__nav list-reset">
             <li className={`${styles['header__nav-item']} ${styles['header__nav-item--home']}`}>
               <NavLink
                 to="/home"
@@ -52,7 +52,7 @@ const Header: React.FC = () => {
                 Главная
               </NavLink>
             </li>
-            <li className={styles['header__nav-item']}>
+            <li className="page__nav-item">
               <NavLink
                 to="/genres"
                 className={({ isActive }) =>
@@ -68,12 +68,12 @@ const Header: React.FC = () => {
           <SearchInput />
           {user ? (
             <>
-              <button className={`${styles['header__btn']} btn-reset`}>
+              <NavLink to="/account" className={`${styles['header__nav-link']} btn-reset`}>
                 <span className={styles['header__btn-text']}>{user.name}</span>
                 <span className={styles['header__btn-icon']}>
                   <FiUser />
                 </span>
-              </button>
+              </NavLink>
               <button className={`${styles['header__btn']} btn-reset`} onClick={logOut}>
                 <FaSignOutAlt />
               </button>

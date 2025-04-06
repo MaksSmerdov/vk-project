@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaUndo } from 'react-icons/fa';
 import { NavLink, useParams } from 'react-router-dom';
-import MovieCard from '../../components/MovieCard/MovieCard';
+import MovieCard from '../../components/Cards/MovieCard/MovieCard';
 import Button from '../../ui/Button/Button';
 import { capitalizeFirstLetter } from '../../utils/utilsFunctions';
 import styles from './GenresMoviePage.module.scss';
