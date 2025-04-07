@@ -75,11 +75,7 @@ export const registerUser = createAsyncThunk<User, RegisterData, { rejectValue: 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    resetError: (state) => {
-      state.error = null;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
@@ -106,5 +102,4 @@ const authSlice = createSlice({
   },
 });
 
-export const { resetError } = authSlice.actions;
 export default authSlice.reducer;

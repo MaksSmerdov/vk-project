@@ -72,20 +72,18 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchToLogin, onRegistrati
       newErrors.confirmPassword = 'Пароли не совпадают';
     }
 
-    // Если есть ошибки — прерываем
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
 
     setIsLoading(true);
-    // Если ошибок нет — регистрация
     const registrationData: RegisterData = { email, password, name, surname };
     dispatch(registerUser(registrationData))
       .unwrap()
       .then(() => {
         toast.success('Вы успешно зарегистрировались!');
-        onRegistrationSuccess(); // вызываем новый callback
+        onRegistrationSuccess();
       })
       .catch((err) => {
         toast.error(`Ошибка регистрации: ${err}`);

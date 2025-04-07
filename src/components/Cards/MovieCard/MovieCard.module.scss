@@ -51,6 +51,22 @@
     @include mixins.text-style(24px, 32px, 700);
     z-index: 1;
   }
+  &__remove {
+    top: -12px;
+    right: -12px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: vars.$white;
+    @include mixins.text-style(24px, 0, 700);
+    transition: color 0.3s ease-in-out;
+    z-index: 1;
+    &:hover {
+    color: vars.$flaming-flamingo;
+    transition: color 0.3s ease-in-out;
+    }
+  }
 }
 
 

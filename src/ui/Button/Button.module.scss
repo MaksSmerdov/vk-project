@@ -6,10 +6,9 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 4px 24px;
   min-height: 48px;
   min-width: 48px;
-  font-family: 'Play', sans-serif;
   @include mixins.text-style(18px, 24px, 700);
   border: none;
   border-radius: 28px;

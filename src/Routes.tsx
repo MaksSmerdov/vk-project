@@ -8,6 +8,7 @@ import GenresPage from './pages/Genres/GenresPage';
 import GenreMoviesPage from './pages/GenresMovie/GenresMoviePage';
 import HomePage from './pages/Home/HomePage';
 import MoviePage from './pages/Movie/MoviePage';
+import ProtectedRoute from './providers/ProtectedRoute.tsx';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -19,7 +20,13 @@ const AppRoutes: React.FC = () => {
         <Route path="/genres/:genre" element={<GenreMoviesPage />} />
         <Route path="/movie/:id" element={<MoviePage />} />
         <Route path="/login" element={null} />
-        <Route path="/account" element={<AccountPage />}>
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              <AccountPage />
+            </ProtectedRoute>
+          }>
           <Route path="favorites" element={<AccountFavorites />} />
           <Route path="settings" element={<AccountSettings />} />
         </Route>

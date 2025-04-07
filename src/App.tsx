@@ -9,13 +9,23 @@ import { useAppDispatch } from './hooks/useAppDispatch';
 import './styles/app.scss';
 import AppRoutes from './Routes';
 import { fetchProfile } from './store/slices/authSlice';
+import { fetchFavorites } from './store/slices/favoritesSlice.ts';
+import { useSelector } from 'react-redux';
+import { RootState } from './store/store.ts';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
+  const user = useSelector((state: RootState) => state.auth.user);
 
   useEffect(() => {
     dispatch(fetchProfile());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchFavorites());
+    }
+  }, [dispatch, user]);
 
   return (
     <ThemeWrapper>
@@ -29,7 +39,12 @@ const App: React.FC = () => {
             <Footer />
           </div>
         </div>
-        <ToastContainer position="top-center" />
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          pauseOnHover={false}
+          closeOnClick={true}
+        />
       </BrowserRouter>
     </ThemeWrapper>
   );

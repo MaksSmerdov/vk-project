@@ -3,6 +3,7 @@
 
 .body {
   position: relative;
+  min-width: 320px;
 
   &::before {
     content: '';
@@ -63,13 +64,5 @@
     align-items: center;
     padding: 20px;
 
-  }
-}
-
-
-@media (max-width: 800px) {
-  .app {
-    padding-left: 10px;
-    padding-right: 10px;
   }
 }

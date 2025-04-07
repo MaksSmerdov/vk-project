@@ -88,7 +88,6 @@ body {
   }
 
   &__btn {
-    padding-left: 40px;
     @include mixins.text-style(24px, 24px, 400, vars.$white);
     transition: color 0.3s ease-in-out;
 
@@ -122,7 +121,6 @@ body {
     align-items: center;
     gap: 15px;
     text-decoration: none;
-    font-family: 'Play', sans-serif;
     font-size: 24px;
     line-height: 32px;
     font-weight: 400;
@@ -146,7 +144,7 @@ body {
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: #DC5DFC;
+      background-color: vars.$flaming-flamingo;
     }
   }
 }
@@ -164,14 +162,30 @@ body {
   vertical-align: middle;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   .page {
     &__title {
-      @include mixins.text-style(32px, 36px, 700)
+      @include mixins.text-style(24px, 32px, 700)
     }
     &__subtitle {
       padding-top: 32px;
       @include mixins.text-style(24px, 32px, 700);
+    }
+    &__nav {
+      gap: 20px;
+    }
+    &__nav-item {
+      padding: 0;
+    }
+    &__nav-link {
+      @include mixins.text-style(20px, 28px)
+    }
+    &__btn {
+      @include mixins.text-style(20px, 28px)
     }
   }
 

@@ -8,7 +8,7 @@ interface MovieDescriptionProps {
 
 const MovieDescription: React.FC<MovieDescriptionProps> = ({ movie }) => {
   const formatNumber = (num: number) => {
-    return num.toLocaleString('ru-RU'); // Используем русскую локаль для разделения пробелами
+    return num.toLocaleString('ru-RU');
   };
 
   const details = [

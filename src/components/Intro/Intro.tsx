@@ -13,6 +13,8 @@ import Rating from '../../ui/Rating/Rating';
 import { formatRuntime } from '../../utils/utilsFunctions';
 import AuthModal from '../Auth/AuthModal';
 import styles from './Intro.module.scss';
+import { toast } from 'react-toastify';
+import { fetchProfile } from '../../store/slices/authSlice.ts';
 
 interface IntroProps {
   api?: string;
@@ -23,6 +25,7 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { loading, data, error, refetch } = useFetchMovie<Movie>(`movie/${api}`);
   const user = useSelector((state: RootState) => state.auth.user);
+  const favorites = useSelector((state: RootState) => state.favorites.favorites);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -46,15 +49,22 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
     refetch();
   };
 
+  const isFavorite = data ? favorites.some((movie) => movie.id === data.id) : false;
+
   const favoriteOnClick = () => {
     if (!user) {
       openModal();
     } else if (data) {
-      dispatch(addFavoriteThunk(data));
+      if (!isFavorite) {
+        dispatch(addFavoriteThunk(data));
+        toast.success('Фильм добавлен в избранное.');
+        dispatch(fetchProfile());
+      } else {
+        toast.error('Фильм уже в избранном.');
+      }
     }
   };
 
-  // Если данные ещё не загружены
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -87,10 +97,16 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
                   О фильме
                 </Button>
               )}
-              <Button variant="secondary" icon={<FaHeart />} onClick={favoriteOnClick} />
-              {homepage && (
-                <Button variant="secondary" icon={<FaSyncAlt />} onClick={refreshContent} />
-              )}
+              <div style={{ display: 'flex', gap: 16 }}>
+                <Button
+                  variant="secondary"
+                  icon={<FaHeart color={isFavorite ? '#B4A9FF' : 'inherit'} />}
+                  onClick={favoriteOnClick}
+                />
+                {homepage && (
+                  <Button variant="secondary" icon={<FaSyncAlt />} onClick={refreshContent} />
+                )}
+              </div>
             </div>
           </div>
         </div>

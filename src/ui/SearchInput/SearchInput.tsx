@@ -5,6 +5,7 @@ import { useDebounce } from 'use-debounce';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
 import { Movie } from '../../types/movie';
 import Rating from '../Rating/Rating';
+import MobileSearch from './MobileSearch';
 import styles from './SearchInput.module.scss';
 
 const SearchInput: React.FC = () => {
@@ -62,61 +63,83 @@ const SearchInput: React.FC = () => {
     setIsDropdownOpen(false);
   };
 
-  return (
-    <div ref={containerRef} className={styles['custom-input']}>
-      <FiSearch className={styles['custom-input__icon']} />
-      <input
-        type="text"
-        placeholder="Поиск"
-        className={styles['custom-input__field']}
-        value={searchTerm}
-        onChange={handleChange}
-        onFocus={handleFocus}
-      />
-      {searchTerm && (
-        <button
-          type="button"
-          className={`${styles['custom-input__clear-btn']} btn-reset`}
-          onClick={handleClearInput}>
-          <FiX />
-        </button>
-      )}
+  // Состояние для отображения мобильной модалки
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
-      {isDropdownOpen && !loading && !error && movies && movies.length > 0 && (
-        <ul className={styles['custom-input__dropdown']}>
-          {movies.map((movie) => (
-            <li
-              key={movie.id}
-              className={styles['custom-input__dropdown-item']}
-              onClick={() => handleSelectMovie(movie.id)}>
-              <img
-                className={styles['custom-input__dropdown-item-poster']}
-                src={movie.posterUrl}
-                alt={movie.title}
-              />
-              <div className={styles['custom-input__dropdown-item-content']}>
-                <div className={styles['custom-input__dropdown-item-content-meta']}>
-                  <Rating value={movie.tmdbRating} style={{ padding: '2px 8px' }} />
-                  <span>{movie.releaseYear}</span>
-                  {movie.genres?.length > 0 && <span>{movie.genres.join(', ')}</span>}
-                  <span>{movie.runtime} min</span>
+  const openMobileSearch = () => {
+    setIsMobileSearchOpen(true);
+  };
+
+  const closeMobileSearch = () => {
+    setIsMobileSearchOpen(false);
+    setSearchTerm('');
+    setIsDropdownOpen(false);
+  };
+
+  return (
+    <>
+      {/* Иконка для мобильного поиска */}
+      <div className={styles['search-icon']} onClick={openMobileSearch}>
+        <FiSearch />
+      </div>
+
+      {/* Десктопная версия поиска */}
+      <div ref={containerRef} className={styles['custom-input']}>
+        <FiSearch className={styles['custom-input__icon']} />
+        <input
+          type="text"
+          placeholder="Поиск"
+          className={styles['custom-input__field']}
+          value={searchTerm}
+          onChange={handleChange}
+          onFocus={handleFocus}
+        />
+        {searchTerm && (
+          <button
+            type="button"
+            className={`${styles['custom-input__clear-btn']} btn-reset`}
+            onClick={handleClearInput}>
+            <FiX />
+          </button>
+        )}
+
+        {isDropdownOpen && !loading && !error && movies && movies.length > 0 && (
+          <ul className={styles['custom-input__dropdown']}>
+            {movies.map((movie) => (
+              <li
+                key={movie.id}
+                className={styles['custom-input__dropdown-item']}
+                onClick={() => handleSelectMovie(movie.id)}>
+                <img
+                  className={styles['custom-input__dropdown-item-poster']}
+                  src={movie.posterUrl}
+                  alt={movie.title}
+                />
+                <div className={styles['custom-input__dropdown-item-content']}>
+                  <div className={styles['custom-input__dropdown-item-content-meta']}>
+                    <Rating value={movie.tmdbRating} style={{ padding: '2px 8px' }} />
+                    <span>{movie.releaseYear}</span>
+                    {movie.genres?.length > 0 && <span>{movie.genres.join(', ')}</span>}
+                    <span>{movie.runtime} min</span>
+                  </div>
+                  <div className={styles['custom-input__dropdown-item-content-title']}>
+                    {movie.title}
+                  </div>
                 </div>
-                <div className={styles['custom-input__dropdown-item-content-title']}>
-                  {movie.title}
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-      {movies?.length === 0 && (
-        <div className={`${styles['custom-input__message']}`}>Фильмы не найдены</div>
-      )}
-      {loading && <div className={`${styles['custom-input__message']}`}>Загрузка...</div>}
-      {error && (
-        <div className={`${styles['custom-input__message']}`}>Ошибка при загрузке данных</div>
-      )}
-    </div>
+              </li>
+            ))}
+          </ul>
+        )}
+        {movies?.length === 0 && (
+          <div className={styles['custom-input__message']}>Фильмы не найдены</div>
+        )}
+        {loading && <div className={styles['custom-input__message']}>Загрузка...</div>}
+        {error && <div className={styles['custom-input__message']}>Ошибка при загрузке данных</div>}
+      </div>
+
+      {/* Отображение мобильного поиска */}
+      {isMobileSearchOpen && <MobileSearch onClose={closeMobileSearch} />}
+    </>
   );
 };
 
