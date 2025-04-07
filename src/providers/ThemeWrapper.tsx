@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../../hooks/useThemeClass';
+import { useTheme } from '../hooks/useThemeClass';
 
 const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const theme = useTheme();

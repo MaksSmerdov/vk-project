@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaKey, FaRegEnvelope } from 'react-icons/fa';
 import { FiUser } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { registerUser } from '../../../store/slices/authSlice';
 import { RegisterData } from '../../../types/authUser';
@@ -8,7 +9,6 @@ import AuthInput from '../../../ui/AuthInput/AuthInput';
 import Button from '../../../ui/Button/Button';
 import { capitalizeFirstLetter } from '../../../utils/utilsFunctions';
 import styles from '../AuthModal.module.scss';
-import { toast } from 'react-toastify';
 
 interface RegisterFormProps {
   switchToLogin: () => void;

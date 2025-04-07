@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleTheme } from '../../store/slices/themeSlice';
-import type { RootState } from '../../store/store';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../../../store/slices/themeSlice';
+import type { RootState } from '../../../store/store';
 import styles from './Header.module.scss';
 
 const ThemeSwitcher = () => {
@@ -10,9 +10,7 @@ const ThemeSwitcher = () => {
 
   return (
     <>
-      <button
-        className={`${styles['header__btn']} btn-reset`}
-        onClick={() => dispatch(toggleTheme())}>
+      <button className={'page__btn btn-reset'} onClick={() => dispatch(toggleTheme())}>
         <span className={styles['header__btn-switcher']}>
           {theme === 'dark' ? <FaSun /> : <FaMoon />}
         </span>

@@ -8,3 +8,9 @@ export const formatRuntime = (minutes: number): string => {
   const mins = minutes % 60;
   return `${hours}h ${mins}m`;
 };
+
+export const getInitials = (name: string = '', surname: string = '') => {
+  const firstNameInitial = name ? name[0].toUpperCase() : '';
+  const lastNameInitial = surname ? surname[0].toUpperCase() : '';
+  return firstNameInitial + lastNameInitial;
+};

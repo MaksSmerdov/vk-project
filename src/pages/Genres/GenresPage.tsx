@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import GenreCard from '../../components/GenreCard/GenreCard';
+import GenreCard from '../../components/Cards/GenreCard/GenreCard';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
 import Button from '../../ui/Button/Button';
 import styles from './GenresPage.module.scss';

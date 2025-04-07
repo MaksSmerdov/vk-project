@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Movie } from '../../types/movie';
+import { Movie } from '../../../types/movie';
 import styles from './MovieCard.module.scss';
 
 interface MovieCardProps {

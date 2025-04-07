@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { FaKey, FaRegEnvelope } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { loginUser } from '../../../store/slices/authSlice';
 import { AuthInfo } from '../../../types/authUser';
 import AuthInput from '../../../ui/AuthInput/AuthInput';
 import Button from '../../../ui/Button/Button';
 import styles from '../AuthModal.module.scss';
-import { toast } from 'react-toastify';
 
 interface LoginFormProps {
   switchToRegister: () => void;

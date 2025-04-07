@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import * as React from 'react';
+import { useState } from 'react';
 import { FaHeart, FaSyncAlt } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,9 +7,9 @@ import { useFetchMovie } from '../../hooks/useFetchMovie';
 import { RootState } from '../../store/store';
 import { Movie } from '../../types/movie';
 import Button from '../../ui/Button/Button';
+import Rating from '../../ui/Rating/Rating';
 import { formatRuntime } from '../../utils/utilsFunctions';
 import AuthModal from '../Auth/AuthModal';
-import Rating from '../../ui/Rating/Rating';
 import styles from './Intro.module.scss';
 
 interface IntroProps {

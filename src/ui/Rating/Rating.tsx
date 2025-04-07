@@ -1,6 +1,6 @@
-import styles from './Rating.module.scss';
-import { FaStar } from 'react-icons/fa';
 import { CSSProperties } from 'react';
+import { FaStar } from 'react-icons/fa';
+import styles from './Rating.module.scss';
 
 interface RatingProps {
   value: number;

@@ -1,0 +1,80 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+:global(.dark) {
+  .account {
+    &__settings {
+      &-icon {
+        color: vars.$white;
+      }
+      &-info {
+        &--title {
+          color: vars.$white;
+        }
+        &--text {
+          color: vars.$white;
+        }
+      }
+    }
+  }
+}
+
+:global(.light) {
+  .account {
+    &__settings {
+      &-icon {
+        color: vars.$black;
+      }
+      &-info {
+        &--title {
+          color: vars.$black;
+        }
+        &--text {
+          color: vars.$black;
+        }
+      }
+    }
+  }
+}
+
+.account {
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__settings {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    &-row {
+      display: flex;
+      gap: 16px;
+    }
+    &-icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgb(vars.$white, 0.5);
+      @include mixins.text-style(24px, 32px, 700);
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      &--title {
+        @include mixins.text-style(18px, 24px, 400)
+      }
+      &--text {
+        @include mixins.text-style(24px, 32px, 700)
+      }
+    }
+    &-btn {
+      padding-top: 64px;
+    }
+  }
+}

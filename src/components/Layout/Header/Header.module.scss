@@ -1,5 +1,5 @@
-@use '../../styles/mixins' as mixins;
-@use '../../styles/variables' as vars;
+@use '../../../styles/mixins' as mixins;
+@use '../../../styles/variables' as vars;
 
 :global(.light) {
   .header {
@@ -36,66 +36,6 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
-  }
-
-  &__btn {
-    padding-left: 40px;
-    @include mixins.text-style(24px, 24px, 400, vars.$white);
-    transition: color 0.3s ease-in-out;
-
-    &:hover {
-      color: vars.$winterspring-lilac;
-    }
-    &:active {
-      color: vars.$winterspring-lilac;
-    }
-    &:focus-visible {
-      color: vars.$winterspring-lilac;
-      outline: none;
-    }
-  }
-
-  &__nav {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-  }
-
-  &__nav-item {
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-  }
-
-  &__nav-link {
-    position: relative;
-    text-decoration: none;
-    font-family: 'Play', sans-serif;
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: 400;
-    color: white;
-    transition: color 0.3s ease-in-out;
-  }
-
-  &__nav-link:not(.active):hover {
-    color: #9747FF;
-    cursor: pointer;
-  }
-
-  &__nav-link.active {
-    color: white;
-    cursor: default;
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: #DC5DFC;
-    }
   }
 
   &__nav-icon,

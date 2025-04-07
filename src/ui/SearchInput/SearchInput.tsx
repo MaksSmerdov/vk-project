@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FiSearch, FiX } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { useDebounce } from 'use-debounce';

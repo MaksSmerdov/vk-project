@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
 import { Movie } from '../../types/movie';
-import MovieCard from '../MovieCard/MovieCard';
+import MovieCard from '../Cards/MovieCard/MovieCard';
 import styles from './BestFilms.module.scss';
 
 const BestFilms: React.FC = () => {

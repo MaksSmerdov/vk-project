@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import ThemeWrapper from './components/ThemeWrapper/ThemeWrapper';
+import Footer from './components/Layout/Footer/Footer';
+import Header from './components/Layout/Header/Header';
+import ThemeWrapper from './providers/ThemeWrapper';
 import { useAppDispatch } from './hooks/useAppDispatch';
 import './styles/app.scss';
 import AppRoutes from './Routes';

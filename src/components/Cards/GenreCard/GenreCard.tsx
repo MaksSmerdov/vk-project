@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { capitalizeFirstLetter } from '../../../utils/utilsFunctions';
 import styles from './GenreCard.module.scss';
-import { capitalizeFirstLetter } from '../../utils/utilsFunctions';
 
 interface GenreCardProps {
   genre: string;

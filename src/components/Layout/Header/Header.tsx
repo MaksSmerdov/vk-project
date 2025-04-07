@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
-import { FaSignOutAlt } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { logoutUser } from '../../store/slices/authSlice';
-import type { RootState } from '../../store/store';
-import SearchInput from '../../ui/SearchInput/SearchInput';
-import ThemeSwitcher from './ThemeSwitcher';
-import AuthModal from '../Auth/AuthModal';
-import Logo from '../../ui/Logo/Logo';
 import { FiList, FiUser } from 'react-icons/fi';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import type { RootState } from '../../../store/store';
+import Logo from '../../../ui/Logo/Logo';
+import SearchInput from '../../../ui/SearchInput/SearchInput';
+import AuthModal from '../../Auth/AuthModal';
 import styles from './Header.module.scss';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const user = useSelector((state: RootState) => state.auth.user);
-  const dispatch = useAppDispatch();
 
   const openModal = () => {
     setIsOpen(true);
@@ -24,15 +19,6 @@ const Header: React.FC = () => {
 
   const closeModal = () => {
     setIsOpen(false);
-  };
-
-  const logOut = async () => {
-    try {
-      await dispatch(logoutUser()).unwrap();
-      toast.success('Вы успешно вышли!');
-    } catch (error) {
-      console.error('Ошибка при логауте:', error);
-    }
   };
 
   return (
@@ -43,21 +29,17 @@ const Header: React.FC = () => {
         </div>
         <div className={styles['header__right']}>
           <ul className="page__nav list-reset">
-            <li className={`${styles['header__nav-item']} ${styles['header__nav-item--home']}`}>
+            <li className={`${styles['header__nav-item--home']} page__nav-item`}>
               <NavLink
                 to="/home"
-                className={({ isActive }) =>
-                  `${styles['header__nav-link']} ${isActive ? styles.active : ''}`
-                }>
+                className={({ isActive }) => `page__nav-link ${isActive ? 'active' : ''}`}>
                 Главная
               </NavLink>
             </li>
             <li className="page__nav-item">
               <NavLink
                 to="/genres"
-                className={({ isActive }) =>
-                  `${styles['header__nav-link']} ${isActive ? styles.active : ''}`
-                }>
+                className={({ isActive }) => `page__nav-link ${isActive ? 'active' : ''}`}>
                 <span className={styles['header__nav-text']}>Жанры</span>
                 <span className={styles['header__nav-icon']}>
                   <FiList />
@@ -67,19 +49,14 @@ const Header: React.FC = () => {
           </ul>
           <SearchInput />
           {user ? (
-            <>
-              <NavLink to="/account" className={`${styles['header__nav-link']} btn-reset`}>
-                <span className={styles['header__btn-text']}>{user.name}</span>
-                <span className={styles['header__btn-icon']}>
-                  <FiUser />
-                </span>
-              </NavLink>
-              <button className={`${styles['header__btn']} btn-reset`} onClick={logOut}>
-                <FaSignOutAlt />
-              </button>
-            </>
+            <NavLink to="/account/favorites" className="page__nav-link btn-reset">
+              <span className={styles['header__btn-text']}>{user.name}</span>
+              <span className={styles['header__btn-icon']}>
+                <FiUser />
+              </span>
+            </NavLink>
           ) : (
-            <button className={`${styles['header__btn']} btn-reset`} onClick={openModal}>
+            <button className={`page__btn btn-reset`} onClick={openModal}>
               <span className={styles['header__btn-text']}>Войти</span>
               <span className={styles['header__btn-icon']}>
                 <FiUser />
