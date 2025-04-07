@@ -3,7 +3,9 @@ import { useState } from 'react';
 import { FaHeart, FaSyncAlt } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
+import { addFavoriteThunk } from '../../store/slices/favoritesSlice';
 import { RootState } from '../../store/store';
 import { Movie } from '../../types/movie';
 import Button from '../../ui/Button/Button';
@@ -22,6 +24,7 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
   const { loading, data, error, refetch } = useFetchMovie<Movie>(`movie/${api}`);
   const user = useSelector((state: RootState) => state.auth.user);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const openModal = () => {
     setIsOpen(true);
@@ -46,6 +49,8 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
   const favoriteOnClick = () => {
     if (!user) {
       openModal();
+    } else if (data) {
+      dispatch(addFavoriteThunk(data));
     }
   };
 

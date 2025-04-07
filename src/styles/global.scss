@@ -9,6 +9,15 @@
     &__subtitle {
       color: vars.$black
     }
+    &__nav-link {
+      color: vars.$black;
+      &.active {
+        color: vars.$black;
+      }
+    }
+    &__btn {
+      color: vars.$black;
+    }
   }
 }
 
