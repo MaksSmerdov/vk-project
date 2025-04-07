@@ -6,9 +6,11 @@
     &__genre-span {
       color: rgba(vars.$black, 0.7);
     }
+
     &__descr {
       color: rgba(vars.$black, 0.7);
     }
+
     &__img {
       border-radius: 16px;
       border: 1px vars.$black solid;
@@ -22,23 +24,28 @@
   align-items: center;
   justify-content: space-between;
   gap: 30px;
+
   &__left {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
+
   &__genre {
     display: flex;
     align-items: center;
     gap: 16px;
   }
+
   &__genre-span {
     @include mixins.text-style(18px, 18px, 400, rgba(vars.$white, 0.7));
   }
+
   &__descr {
     @include mixins.text-style(24px, 32px, 400, rgba(vars.$white, 0.7));
   }
+
   &__btns {
     display: flex;
     align-items: center;
@@ -49,7 +56,15 @@
       align-items: center;
       gap: 16px;
     }
+
+    &-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
   }
+
   &__img {
     border-radius: 16px;
     max-width: 680px;
@@ -60,9 +75,11 @@
 @media (max-width: 1024px) {
   .intro {
     gap: 24px;
+
     &__genre-span {
       @include mixins.text-style(14px, 20px, 400, rgba(vars.$white, 0.7));
     }
+
     &__descr {
       @include mixins.text-style(18px, 24px, 400, rgba(vars.$white, 0.7));
     }
@@ -73,6 +90,7 @@
   .intro {
     padding: 0;
     flex-direction: column-reverse;
+
     &__left {
       gap: 12px;
     }
@@ -93,6 +111,12 @@
         gap: 16px; // расстояние между кнопками 16px
         > button {
           flex: auto;
+        }
+      }
+
+      &-row {
+        &--trailer {
+          min-width: 251px;
         }
       }
     }

@@ -7,15 +7,18 @@
       rect {
         stroke: vars.$black
       }
+
       path {
         fill: vars.$black;
       }
     }
+
     &:hover {
       svg {
         rect {
           stroke: vars.$flaming-flamingo;
         }
+
         path {
           fill: vars.$flaming-flamingo;
         }
@@ -26,6 +29,7 @@
 
 .footer {
   padding: 40px 0;
+
   &__nav {
     display: flex;
     align-items: center;
@@ -56,11 +60,14 @@
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 768px) {
   .footer {
     padding-top: 24px;
     padding-bottom: 24px;
-    justify-content: flex-start;
+
+    &__nav {
+      justify-content: flex-start;
+    }
   }
 }
 

@@ -86,28 +86,44 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
           <h2 className={`page__title title-reset`}>{data.title}</h2>
           <p className={`${styles['intro__descr']} descr-reset`}>{data.plot}</p>
           <div className={`${styles['intro__btns']}`}>
-            <div className={`${styles['intro__btns-top']}`}>
-              <Button variant="primary" onClick={trailerOnClick}>
-                Трейлер
-              </Button>
-            </div>
-            <div className={`${styles['intro__btns-bottom']}`}>
-              {homepage && (
-                <Button variant="secondary" onClick={() => navigate(`/movie/${data.id}`)}>
-                  О фильме
-                </Button>
-              )}
-              <div style={{ display: 'flex', gap: 16 }}>
-                <Button
-                  variant="secondary"
-                  icon={<FaHeart color={isFavorite ? '#B4A9FF' : 'inherit'} />}
-                  onClick={favoriteOnClick}
-                />
-                {homepage && (
-                  <Button variant="secondary" icon={<FaSyncAlt />} onClick={refreshContent} />
-                )}
+            {homepage ? (
+              <>
+                <div className={`${styles['intro__btns-top']}`}>
+                  <Button variant="primary" onClick={trailerOnClick}>
+                    Трейлер
+                  </Button>
+                </div>
+                <div className={`${styles['intro__btns-bottom']}`}>
+                  <Button variant="secondary" onClick={() => navigate(`/movie/${data.id}`)}>
+                    О фильме
+                  </Button>
+                  <div style={{ display: 'flex', gap: 16 }}>
+                    <Button
+                      variant="secondary"
+                      icon={<FaHeart color={isFavorite ? '#B4A9FF' : 'inherit'} />}
+                      onClick={favoriteOnClick}
+                    />
+                    <Button variant="secondary" icon={<FaSyncAlt />} onClick={refreshContent} />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className={`${styles['intro__btns-row']}`}>
+                <div className={`${styles['intro__btns-row--trailer']}`}>
+                  <Button variant="primary" onClick={trailerOnClick} style={{ maxWidth: '171px' }}>
+                    Трейлер
+                  </Button>
+                </div>
+                <div className={`${styles['intro__btns-row--favorite']}`}>
+                  <Button
+                    variant="secondary"
+                    icon={<FaHeart color={isFavorite ? '#B4A9FF' : 'inherit'} />}
+                    onClick={favoriteOnClick}
+                    style={{ maxWidth: '68px' }}
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
         <div className={`${styles['intro__right']}`}>

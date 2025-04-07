@@ -6,15 +6,19 @@
     &__title {
       color: vars.$black;
     }
+
     &__subtitle {
       color: vars.$black
     }
+
     &__nav-link {
       color: vars.$black;
+
       &.active {
         color: vars.$black;
       }
     }
+
     &__btn {
       color: vars.$black;
     }
@@ -26,6 +30,7 @@
     &__title {
       color: vars.$white;
     }
+
     &__subtitle {
       color: vars.$white
     }
@@ -42,6 +47,7 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: "Play", sans-serif;
@@ -77,11 +83,13 @@ body {
 .page {
   padding-bottom: 120px;
   padding-top: 64px;
+
   &__title {
     @include mixins.text-style(48px, 56px, 700);
     transition: color 0.3s ease-in-out;
     text-decoration: none;
   }
+
   &__subtitle {
     padding-top: 40px;
     @include mixins.text-style(40px, 48px, 700);
@@ -94,9 +102,11 @@ body {
     &:hover {
       color: vars.$winterspring-lilac;
     }
+
     &:active {
       color: vars.$winterspring-lilac;
     }
+
     &:focus-visible {
       color: vars.$winterspring-lilac;
       outline: none;
@@ -168,22 +178,29 @@ body {
     padding-right: 20px;
   }
   .page {
+    padding-bottom: 32px;
+
     &__title {
       @include mixins.text-style(24px, 32px, 700)
     }
+
     &__subtitle {
       padding-top: 32px;
       @include mixins.text-style(24px, 32px, 700);
     }
+
     &__nav {
       gap: 20px;
     }
+
     &__nav-item {
       padding: 0;
     }
+
     &__nav-link {
       @include mixins.text-style(20px, 28px)
     }
+
     &__btn {
       @include mixins.text-style(20px, 28px)
     }
@@ -204,6 +221,10 @@ body {
   .page {
     &__title {
       @include mixins.text-style(24px, 32px, 700);
+    }
+
+    &__nav-link.active::after {
+      bottom: 2px;
     }
   }
   .arrow::before {

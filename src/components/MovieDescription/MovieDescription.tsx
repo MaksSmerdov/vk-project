@@ -27,7 +27,7 @@ const MovieDescription: React.FC<MovieDescriptionProps> = ({ movie }) => {
   ];
 
   return (
-    <section className="page">
+    <section className="page" style={{ paddingTop: '32px' }}>
       <h2 className="page__subtitle title-reset">О фильме</h2>
       <div className={`${styles['movie-description__details']}`}>
         {details.map((detail, index) => (

@@ -6,9 +6,11 @@
     &__label {
       color: vars.$black;
     }
+
     &__dots {
       border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
     }
+
     &__value {
       color: vars.$black;
     }
@@ -20,10 +22,21 @@
     &__label {
       color: vars.$white;
     }
+
     &__dots {
-      border-bottom: 1px dotted rgba(255, 255, 255, 0.5);    }
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+    }
+
     &__value {
       color: vars.$white;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .movie-description {
+      &__label {
+        color: rgba(vars.$white, 0.60);
+      }
     }
   }
 }
@@ -32,6 +45,7 @@
   &__details {
     margin-top: 64px;
   }
+
   &__row {
     max-width: 50%;
     width: 100%;
@@ -39,15 +53,52 @@
     align-items: center;
     margin-bottom: 24px;
   }
+
   &__label {
     flex: 0 0 auto;
     font-weight: 400;
   }
+
   &__dots {
     flex: 1;
     margin: 0 10px;
   }
+
   &__value {
     flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-description {
+    &__details {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__dots {
+      display: none;
+    }
+
+    &__row {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__label {
+      @include mixins.text-style(14px, 20px)
+    }
+
+    &__value {
+      @include mixins.text-style(18px, 24px)
+    }
   }
 }

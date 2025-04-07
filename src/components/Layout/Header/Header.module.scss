@@ -1,21 +1,6 @@
 @use '../../../styles/mixins' as mixins;
 @use '../../../styles/variables' as vars;
 
-:global(.light) {
-  .header {
-    &__nav-link {
-      color: vars.$black;
-      &.active {
-        color: vars.$black;
-      }
-    }
-    &__btn {
-      color: vars.$black;
-    }
-  }
-}
-
-
 .header {
   padding: 32px 0;
   display: flex;
@@ -67,6 +52,7 @@
     &__btn-text {
       display: none;
     }
+
     &__nav-icon,
     &__btn-icon {
       display: block;
