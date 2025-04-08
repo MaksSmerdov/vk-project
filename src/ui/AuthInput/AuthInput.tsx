@@ -18,7 +18,6 @@ const AuthInput: React.FC<AuthInputProps> = ({ icon, error, ...inputProps }) => 
         </span>
       )}
       <input {...inputProps} className={styles['custom-input__field']} />
-      {/* Если есть текст ошибки, покажем label */}
       {error && <label className={styles['custom-input__error-label']}>{error}</label>}
     </div>
   );

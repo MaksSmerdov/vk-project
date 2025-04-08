@@ -7,10 +7,12 @@
       &__title {
         color: vars.$black;
       }
+
       &__span {
         color: vars.$black
       }
     }
+
     &__btn {
       color: vars.$black;
     }
@@ -23,10 +25,12 @@
       &__title {
         color: vars.$white;
       }
+
       &__span {
         color: vars.$white
       }
     }
+
     &__btn {
       color: vars.$white;
     }
@@ -40,6 +44,7 @@
     font-family: 'Play', sans-serif;
     @include mixins.text-style(18px, 24px, 700);
     transition: color 0.3s ease-in-out;
+
     &:hover {
       color: vars.$blue-jeans;
       transition: color 0.3s ease-in-out;
@@ -56,26 +61,31 @@
   &__container {
     display: flex;
     flex-direction: column;
+
     &__header {
       padding-bottom: 40px;
     }
+
     &__title {
       padding-bottom: 24px;
       align-self: center;
       text-align: center;
     }
+
     &__span {
       padding-bottom: 24px;
       display: flex;
       text-align: center;
       @include mixins.text-style(18px, 24px, 400);
     }
+
     &__body {
       padding-bottom: 24px;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
+
     &__footer {
       display: flex;
       flex-direction: column;
@@ -86,3 +96,44 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .auth {
+    &__error {
+      bottom: 120px;
+    }
+
+    &__container {
+      &__header {
+        padding-bottom: 32px;
+      }
+
+      &__title {
+        align-self: center;
+        text-align: center;
+      }
+
+      &__span {
+        padding-bottom: 24px;
+        display: flex;
+        text-align: center;
+        @include mixins.text-style(18px, 24px, 400);
+      }
+
+      &__body {
+        padding-bottom: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      &__footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 24px;
+      }
+
+    }
+  }
+
+}

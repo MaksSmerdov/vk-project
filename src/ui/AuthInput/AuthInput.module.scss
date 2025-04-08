@@ -5,8 +5,8 @@
 .custom-input {
   position: relative;
   padding: 16px;
-  max-width: 340px;
-  max-height: 56px;
+  width: 340px;
+  height: 56px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -41,9 +41,10 @@
     font-size: 24px;
     color: vars.$black;
     transition: all 0.3s ease;
-   &-error {
-     color: red
-   }
+
+    &-error {
+      color: red
+    }
   }
 
   &__field {
@@ -60,17 +61,17 @@
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 1024px) {
   .custom-input {
-    max-width: 24px;
-    padding: 0;
-    background-color: transparent;
-    border: transparent;
-    &__field {
-      display: none;
-    }
-    &__icon {
-      font-size: 24px;
+    max-width: 295px;
+    height: 56px;
+
+    &__error {
+      &-label {
+        bottom: 3px;
+        right: 5px;
+        font-size: 14px;
+      }
     }
   }
 }

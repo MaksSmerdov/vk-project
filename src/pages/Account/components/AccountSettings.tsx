@@ -28,7 +28,7 @@ const AccountSettings: React.FC = () => {
   if (!user) return <div>Пожалуйста авторизуйтесь</div>;
 
   return (
-    <section className={`${styles['account__container']} page`} style={{ paddingBottom: '0px' }}>
+    <section className={`${styles['account__container']} `}>
       <div className={`${styles['account__settings']}`}>
         <div className={`${styles['account__settings-row']}`}>
           <div className={`${styles['account__settings-icon']}`}>

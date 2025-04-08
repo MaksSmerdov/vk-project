@@ -42,6 +42,7 @@ const SearchInput: React.FC = () => {
         setIsDropdownOpen(false);
       }
     }
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
@@ -63,7 +64,6 @@ const SearchInput: React.FC = () => {
     setIsDropdownOpen(false);
   };
 
-  // Состояние для отображения мобильной модалки
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
   const openMobileSearch = () => {
@@ -78,12 +78,10 @@ const SearchInput: React.FC = () => {
 
   return (
     <>
-      {/* Иконка для мобильного поиска */}
       <div className={styles['search-icon']} onClick={openMobileSearch}>
         <FiSearch />
       </div>
 
-      {/* Десктопная версия поиска */}
       <div ref={containerRef} className={styles['custom-input']}>
         <FiSearch className={styles['custom-input__icon']} />
         <input
@@ -137,7 +135,6 @@ const SearchInput: React.FC = () => {
         {error && <div className={styles['custom-input__message']}>Ошибка при загрузке данных</div>}
       </div>
 
-      {/* Отображение мобильного поиска */}
       {isMobileSearchOpen && <MobileSearch onClose={closeMobileSearch} />}
     </>
   );

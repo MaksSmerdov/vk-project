@@ -14,6 +14,9 @@ const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
         <button className={`${styles['modal__close-button']} btn-reset`} onClick={onClose}>
           <FaTimes />
         </button>
+        <button className={`${styles['modal__close-button--mobile']} btn-reset`} onClick={onClose}>
+          <FaTimes />
+        </button>
         {children}
       </div>
     </div>

@@ -7,6 +7,7 @@
       filter: drop-shadow(0 0 80px rgba(49, 45, 45, 0.68));
       border: 1px vars.$black solid;
     }
+
     &__rank {
       background-color: vars.$winterspring-lilac;
       color: vars.$white;
@@ -20,6 +21,7 @@
       filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.33));
       border: 1px vars.$black solid;
     }
+
     &__rank {
       background-color: white;
       color: #6A5DC2;
@@ -28,15 +30,26 @@
 }
 
 .movie-card {
-  &__link {
-    display: block;
+  &__item {
     position: relative;
-    text-decoration: none;
+    margin-top: 20px;
+    display: flex;
+    max-width: 225px;
   }
 
+  &__link {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+
   &__link-img {
+    min-height: 336px;
     max-width: 224px;
-    height: 336px;
     object-fit: cover;
     border-radius: 16px;
   }
@@ -51,6 +64,7 @@
     @include mixins.text-style(24px, 32px, 700);
     z-index: 1;
   }
+
   &__remove {
     top: -12px;
     right: -12px;
@@ -62,34 +76,18 @@
     @include mixins.text-style(24px, 0, 700);
     transition: color 0.3s ease-in-out;
     z-index: 1;
+
     &:hover {
-    color: vars.$flaming-flamingo;
-    transition: color 0.3s ease-in-out;
+      color: vars.$flaming-flamingo;
+      transition: color 0.3s ease-in-out;
     }
   }
 }
 
-
-@media (max-width: 1400px) {
+@media (max-width: 1085px) {
   .movie-card {
-    &__link-img {
-      border-radius: 16px;
-    }
-  }
-}
-
-@media (max-width: 1100px) {
-  .movie-card {
-    &__link-img {
-      border-radius: 16px;
-    }
-  }
-}
-
-@media (max-width: 800px) {
-  .movie-card {
-    &__link-img {
-      border-radius: 16px;
+    &__item {
+      margin-top: 40px;
     }
   }
 }

@@ -213,12 +213,10 @@ body {
   }
 }
 
-@media (max-width: 800px) {
-  .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+@media (max-width: 768px) {
   .page {
+    padding-top: 0;
+
     &__title {
       @include mixins.text-style(24px, 32px, 700);
     }

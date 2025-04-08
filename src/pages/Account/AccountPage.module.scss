@@ -7,10 +7,12 @@
       &-icon {
         color: vars.$white;
       }
+
       &-info {
         &--title {
           color: vars.$white;
         }
+
         &--text {
           color: vars.$white;
         }
@@ -25,10 +27,12 @@
       &-icon {
         color: vars.$black;
       }
+
       &-info {
         &--title {
           color: vars.$black;
         }
+
         &--text {
           color: vars.$black;
         }
@@ -39,6 +43,7 @@
 
 .favorites {
   &__list {
+    padding-top: 24px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     justify-content: flex-start;
@@ -47,19 +52,29 @@
 }
 
 .account {
+
+  &__nav {
+    padding-top: 64px;
+    gap: 48px;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
   }
+
   &__settings {
+    padding: 64px 0;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     gap: 16px;
+
     &-row {
       display: flex;
       gap: 16px;
     }
+
     &-icon {
       width: 60px;
       height: 60px;
@@ -70,6 +85,7 @@
       background-color: rgb(vars.$white, 0.5);
       @include mixins.text-style(24px, 32px, 700);
     }
+
     &-info {
       display: flex;
       flex-direction: column;
@@ -78,12 +94,74 @@
       &--title {
         @include mixins.text-style(18px, 24px, 400)
       }
+
       &--text {
         @include mixins.text-style(24px, 32px, 700)
       }
     }
-    &-btn {
-      padding-top: 64px;
+
+  }
+}
+
+@media (max-width: 1380px) {
+  .favorites {
+    &__list {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
+  }
+}
+
+@media (max-width: 1060px) {
+  .account__nav {
+    padding-top: 40px;
+    gap: 20px;
+  }
+  .favorites {
+    &__list {
+      padding-top: inherit;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .favorites {
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .account__settings {
+    padding: 40px 0;
+
+    &-icon {
+      width: 48px;
+      height: 48px;
+    }
+
+    &-info {
+      &--title {
+        @include mixins.text-style(14px, 20px, 400)
+      }
+
+      &--text {
+        @include mixins.text-style(18px, 24px, 700)
+      }
+    }
+  }
+}
+
+
+@media (max-width: 515px) {
+  .favorites {
+    &__list {
+      display: flex;
+      margin-right: -20px
+    }
+  }
+  .slide {
+    margin-right: 30px;
   }
 }

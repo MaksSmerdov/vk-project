@@ -6,9 +6,14 @@
     &__window {
       background: linear-gradient(45deg, vars.$white, #757575);
     }
+
     &__close-button {
       background: linear-gradient(45deg, vars.$white, #757575);
       color: vars.$black;
+
+      &--mobile {
+        color: vars.$black;
+      }
     }
   }
 }
@@ -18,9 +23,14 @@
     &__window {
       background: linear-gradient(45deg, rgb(0, 0, 0), #8899d3);
     }
+
     &__close-button {
       background: linear-gradient(45deg, rgb(0, 0, 0), #8899d3);
       color: vars.$white;
+
+      &--mobile {
+        color: vars.$white;
+      }
     }
   }
 }
@@ -64,5 +74,37 @@
   &:hover {
     color: vars.$blue-jeans;
     transition: color 0.3s ease-in-out;
+  }
+
+  &--mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modal__window {
+    padding: 64px 20px 32px 20px;
+    max-width: 335px;
+  }
+
+  .modal__close-button {
+    display: none;
+
+    &--mobile {
+      position: absolute;
+      min-height: 48px;
+      min-width: 48px;
+      font-size: 24px;
+      display: block;
+      top: 3px;
+      right: 0;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: vars.$blue-jeans;
+        transition: color 0.3s ease-in-out;
+      }
+    }
   }
 }
