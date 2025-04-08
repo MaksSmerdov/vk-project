@@ -15,6 +15,7 @@ import AuthModal from '../Auth/AuthModal';
 import styles from './Intro.module.scss';
 import { toast } from 'react-toastify';
 import { fetchProfile } from '../../store/slices/authSlice.ts';
+import VideoModal from '../../ui/VideoPlayer/VideoPlayer.tsx';
 
 interface IntroProps {
   api?: string;
@@ -23,6 +24,7 @@ interface IntroProps {
 
 const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [video, setVideo] = useState(false);
   const { loading, data, error, refetch } = useFetchMovie<Movie>(`movie/${api}`);
   const user = useSelector((state: RootState) => state.auth.user);
   const favorites = useSelector((state: RootState) => state.favorites.favorites);
@@ -41,8 +43,12 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
     return genres.join(', ');
   };
 
-  const trailerOnClick = () => {
-    window.open(`${data?.trailerUrl}`);
+  const openVideo = () => {
+    setVideo(true);
+  };
+
+  const closeVideo = () => {
+    setVideo(false);
   };
 
   const refreshContent = () => {
@@ -89,7 +95,7 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
             {homepage ? (
               <>
                 <div className={`${styles['intro__btns-top']}`}>
-                  <Button variant="primary" onClick={trailerOnClick}>
+                  <Button variant="primary" onClick={openVideo}>
                     Трейлер
                   </Button>
                 </div>
@@ -110,7 +116,7 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
             ) : (
               <div className={`${styles['intro__btns-row']}`}>
                 <div className={`${styles['intro__btns-row--trailer']}`}>
-                  <Button variant="primary" onClick={trailerOnClick} style={{ maxWidth: '171px' }}>
+                  <Button variant="primary" onClick={openVideo} style={{ maxWidth: '171px' }}>
                     Трейлер
                   </Button>
                 </div>
@@ -136,6 +142,7 @@ const Intro: React.FC<IntroProps> = ({ api = 'random', homepage = true }) => {
         </div>
       </div>
       {isOpen && <AuthModal onClose={closeModal} />}
+      {video && <VideoModal onClose={closeVideo} videoTitle={data.title} />}
     </>
   );
 };
